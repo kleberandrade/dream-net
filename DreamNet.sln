@@ -5,16 +5,38 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DreamNet.TCPClient", "DreamNet.TCPClient\DreamNet.TCPClient.vcxproj", "{5C7890F9-A347-4803-BCBF-35DA246D2F3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamNet.TCPServer", "DreamNet.TCPServer\DreamNet.TCPServer.csproj", "{E520C431-9489-4D1F-9768-56A7E85E39AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Debug|Win32.Build.0 = Debug|Win32
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Release|Win32.ActiveCfg = Release|Win32
 		{5C7890F9-A347-4803-BCBF-35DA246D2F3E}.Release|Win32.Build.0 = Release|Win32
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E520C431-9489-4D1F-9768-56A7E85E39AE}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

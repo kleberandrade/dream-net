@@ -2,7 +2,6 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 
-
 #include <windows.h>
 #include "TCPClient.h"
 
@@ -16,7 +15,7 @@
 */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow){
 #else
-int main(int argc, char *argv[]){
+int __cdecl main(int argc, char **argv){
 #endif
 
 	/// Criando um cliente 

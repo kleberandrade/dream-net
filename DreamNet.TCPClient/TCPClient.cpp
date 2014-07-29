@@ -3,6 +3,10 @@
 TCPClient::TCPClient(){
 
 	client = INVALID_SOCKET;
+	struct addrinfo *result = NULL, *ptr = NULL, hints;
+	char *sendbuf = "this is a test";
+	char recvbuf[DEFAULT_BUFLEN];
+	int recvbuflen = DEFAULT_BUFLEN;
 
 	DebugLog("Initialising Winsock......\r\n");
 
@@ -15,39 +19,85 @@ TCPClient::TCPClient(){
 
 	DebugLog("Initialised.\r\n");
 
+	ZeroMemory(&hints, sizeof(hints));
+	hints.ai_family = AF_UNSPEC;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_protocol = IPPROTO_TCP;
 
-	/// Criando um SOCKET para coneção com o servidor
-	client = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	if (client == INVALID_SOCKET) {
-		DebugLog("socket function failed with error: %ld.\r\n", WSAGetLastError());
+	// Resolve the server address and port
+	iResult = getaddrinfo(SERVER_ADDRESS, SERVER_PORT, &hints, &result);
+	if (iResult != 0) {
+		DebugLog("getaddrinfo failed: %d\n", iResult);
 		WSACleanup();
 		exit(NETWORK_ERROR);
 	}
 
-	DebugLog("Socket created.\r\n");
+	// Tenta conectar-se a um endeeço, até que um seja bem sucedido
+	for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 
-	/// A estrutura sockaddr_in específica a família de endereços
-	/// O endereço IP e a PORTA a ser conecatada no servidor
-	service.sin_family = AF_INET;
-	service.sin_addr.s_addr = inet_addr(SERVER_ADDRESS);
-	service.sin_port = htons(SERVER_PORT);
+		// Cria um SOCKET para conectar no servidor
+		client = socket(ptr->ai_family, ptr->ai_socktype,
+			ptr->ai_protocol);
+		if (client == INVALID_SOCKET) {
+			DebugLog("socket failed with error: %ld\n", WSAGetLastError());
+			WSACleanup();
+			exit(NETWORK_ERROR);
+		}
 
-	/// Conectando no servidor
-	iResult = connect(client, (SOCKADDR *)&service, sizeof(service));
-	if (iResult < SOCKET_ERROR){
-		closesocket(client);
-		client = INVALID_SOCKET;
-		DebugLog("The server is down... did not connect\r\n");
-		exit(NETWORK_ERROR);
+		// Conecta no servidor
+		iResult = connect(client, ptr->ai_addr, (int)ptr->ai_addrlen);
+		if (iResult == SOCKET_ERROR) {
+			closesocket(client);
+			client = INVALID_SOCKET;
+			continue;
+		}
+		break;
 	}
 
-	if (client == INVALID_SOCKET){
+	freeaddrinfo(result);
+
+	if (client == INVALID_SOCKET) {
 		DebugLog("Unable to connect to server!\n");
 		WSACleanup();
 		exit(NETWORK_ERROR);
 	}
 
-	DebugLog("Connected to server.\r\n");
+	// Send an initial buffer
+	iResult = send(client, sendbuf, (int)strlen(sendbuf), 0);
+	if (iResult == SOCKET_ERROR) {
+		DebugLog("send failed with error: %d\n", WSAGetLastError());
+		closesocket(client);
+		WSACleanup();
+		exit(NETWORK_ERROR);
+	}
+
+	DebugLog("Bytes Sent: %ld\n", iResult);
+
+	// shutdown the connection since no more data will be sent
+	iResult = shutdown(client, SD_SEND);
+	if (iResult == SOCKET_ERROR) {
+		DebugLog("shutdown failed with error: %d\n", WSAGetLastError());
+		closesocket(client);
+		WSACleanup();
+		exit(NETWORK_ERROR);
+	}
+
+	// Receive until the peer closes the connection
+	do {
+
+		iResult = recv(client, recvbuf, recvbuflen, 0);
+		if (iResult > 0)
+			DebugLog("Bytes received: %d\n", iResult);
+		else if (iResult == 0)
+			DebugLog("Connection closed\n");
+		else
+			DebugLog("recv failed with error: %d\n", WSAGetLastError());
+
+	} while (iResult > 0);
+
+	// cleanup
+	closesocket(client);
+	WSACleanup();
 }
 
 

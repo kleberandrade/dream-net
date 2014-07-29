@@ -39,21 +39,25 @@
 #pragma comment(lib,"ws2.lib")
 #else
 #pragma comment (lib, "ws2_32.lib")
+#pragma comment (lib, "Mswsock.lib")
+#pragma comment (lib, "AdvApi32.lib")
 #endif
 
 #include <winsock2.h>
-#include <stdlib.h>
+#include <ws2tcpip.h>
+#include <iphlpapi.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>  
 #include <time.h> 
 
-
 #define DEFAULT_FAMILY		AF_UNSPEC
 #define DEFAULT_SOCKTYPE    SOCK_STREAM
+#define DEFAULT_BUFLEN		512
 #define NETWORK_ERROR		1
 #define SLEEP_TIME			20
-#define SERVER_PORT			12322
+#define SERVER_PORT			"12322"
 #define SERVER_ADDRESS		"127.0.0.1"
 
 class TCPClient

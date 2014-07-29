@@ -5,7 +5,6 @@
 #include <windows.h>
 #include "TCPClient.h"
 
-
 #ifdef _WCE_SECTION
 /**
 	hInstance: HANDLE TO AN INSTANCE.  This is the "handle" to YOUR PROGRAM ITSELF.
@@ -18,8 +17,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLin
 int __cdecl main(int argc, char **argv){
 #endif
 
-	/// Criando um cliente 
+	printf("********************************************\n");
+	printf("       GRUPO DE REABILITACAO ROBOTICA       \n");
+	printf("     ESCOLA DE ENGENHARIA DE SAO CARLOS     \n");
+	printf("          UNIVERSIDADE DE SAO PAULO         \n");
+	printf("********************************************\n");
+	printf("          ROBO DE REABILITACAO: V1.0        \n");
+	printf("********************************************\n\n");
+
+
 	TCPClient client = TCPClient();
+	client.Connect();
+
 
 	return EXIT_SUCCESS;
 }

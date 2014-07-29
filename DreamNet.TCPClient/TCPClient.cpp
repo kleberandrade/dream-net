@@ -2,14 +2,12 @@
 
 TCPClient::TCPClient(){
 
-	client = INVALID_SOCKET;
-	struct addrinfo *result = NULL, *ptr = NULL, hints;
-	char *sendbuf = "this is a test";
-	char recvbuf[DEFAULT_BUFLEN];
-	int recvbuflen = DEFAULT_BUFLEN;
+	remote_socket = INVALID_SOCKET;
+	running = false;
 
 	DebugLog("Initialising Winsock......\r\n");
 
+	//----------------------
 	/// Específica e inicializa a versão do winsock a ser usada
 	iResult = WSAStartup(0x202, &wsaData);
 	if (iResult != NO_ERROR){
@@ -19,88 +17,94 @@ TCPClient::TCPClient(){
 
 	DebugLog("Initialised.\r\n");
 
-	ZeroMemory(&hints, sizeof(hints));
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_protocol = IPPROTO_TCP;
-
-	// Resolve the server address and port
-	iResult = getaddrinfo(SERVER_ADDRESS, SERVER_PORT, &hints, &result);
-	if (iResult != 0) {
-		DebugLog("getaddrinfo failed: %d\n", iResult);
+	//----------------------
+	// Cria um socket para conexão com o servidor
+	remote_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if (remote_socket == INVALID_SOCKET) {
+		DebugLog("socket failed with error: %ld\r\n", WSAGetLastError());
 		WSACleanup();
 		exit(NETWORK_ERROR);
 	}
-
-	// Tenta conectar-se a um endeeço, até que um seja bem sucedido
-	for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
-
-		// Cria um SOCKET para conectar no servidor
-		client = socket(ptr->ai_family, ptr->ai_socktype,
-			ptr->ai_protocol);
-		if (client == INVALID_SOCKET) {
-			DebugLog("socket failed with error: %ld\n", WSAGetLastError());
-			WSACleanup();
-			exit(NETWORK_ERROR);
-		}
-
-		// Conecta no servidor
-		iResult = connect(client, ptr->ai_addr, (int)ptr->ai_addrlen);
-		if (iResult == SOCKET_ERROR) {
-			closesocket(client);
-			client = INVALID_SOCKET;
-			continue;
-		}
-		break;
-	}
-
-	freeaddrinfo(result);
-
-	if (client == INVALID_SOCKET) {
-		DebugLog("Unable to connect to server!\n");
-		WSACleanup();
-		exit(NETWORK_ERROR);
-	}
-
-	// Send an initial buffer
-	iResult = send(client, sendbuf, (int)strlen(sendbuf), 0);
-	if (iResult == SOCKET_ERROR) {
-		DebugLog("send failed with error: %d\n", WSAGetLastError());
-		closesocket(client);
-		WSACleanup();
-		exit(NETWORK_ERROR);
-	}
-
-	DebugLog("Bytes Sent: %ld\n", iResult);
-
-	// shutdown the connection since no more data will be sent
-	iResult = shutdown(client, SD_SEND);
-	if (iResult == SOCKET_ERROR) {
-		DebugLog("shutdown failed with error: %d\n", WSAGetLastError());
-		closesocket(client);
-		WSACleanup();
-		exit(NETWORK_ERROR);
-	}
-
-	// Receive until the peer closes the connection
-	do {
-
-		iResult = recv(client, recvbuf, recvbuflen, 0);
-		if (iResult > 0)
-			DebugLog("Bytes received: %d\n", iResult);
-		else if (iResult == 0)
-			DebugLog("Connection closed\n");
-		else
-			DebugLog("recv failed with error: %d\n", WSAGetLastError());
-
-	} while (iResult > 0);
-
-	// cleanup
-	closesocket(client);
-	WSACleanup();
 }
-
 
 TCPClient::~TCPClient(){
 	system("PAUSE");
+}
+
+/**
+	Fecha o socket
+*/
+void TCPClient::Close(){
+	DebugLog("Connection closed\r\n");
+	closesocket(remote_socket);
+	WSACleanup();
+}
+
+/**
+	Connect no servidor.
+*/
+int TCPClient::Connect(){
+	iResult = connect(remote_socket, (SOCKADDR*)&client_service, sizeof(client_service));
+
+	if (iResult == SOCKET_ERROR) {
+		DebugLog("connect failed with error: %d\r\n", WSAGetLastError());
+		closesocket(remote_socket);
+		WSACleanup();
+		return NETWORK_ERROR;
+	}
+
+	running = true;
+	return NETWORK_OK;
+}
+
+DWORD WINAPI TCPClient::Sender(LPVOID param){
+	DebugLog("Start sender thread\r\n");
+	SOCKET socket = (SOCKET)param;
+	char buffer[BUFFER_SIZE];
+	int byteSend;
+
+	do{
+		memset(&buffer, 0, BUFFER_SIZE);
+		// envia a mensagem para o servidor
+		byteSend = send(socket, buffer, BUFFER_SIZE, 0);
+		if (byteSend == SOCKET_ERROR){
+			DebugLog("Failed to send message\r\n");
+			running = false;
+		}
+		else {
+			DebugLog("send() is OK.\n");
+			DebugLog("Sended data is: \"%s\"\r\n", buffer);
+			DebugLog("Bytes Sent: %ld.\n", byteSend);
+		}
+
+		Sleep(SLEEP_TIME);
+	} while (running);
+
+	return EXIT_SUCCESS;
+}
+
+DWORD WINAPI TCPClient::Receiver(LPVOID param){
+	DebugLog("Start receiver thread\r\n");
+	SOCKET socket = (SOCKET)param;
+	char buffer[BUFFER_SIZE];
+	int byteRecv;
+
+	do{
+		memset(&buffer, 0, BUFFER_SIZE);
+		// recebe a mensagem do servidor
+		byteRecv = recv(socket, buffer, BUFFER_SIZE, 0);
+		if (byteRecv == SOCKET_ERROR){
+			DebugLog("Failed to receive messsage.\r\n", WSAGetLastError());
+			running = false;
+		}
+		else {
+			DebugLog("ecv() is OK.\n");
+			DebugLog("Received data is: \"%s\"\r\n", buffer);
+			DebugLog("Bytes received: %ld.\r\n", byteRecv);
+		}
+
+		Sleep(SLEEP_TIME);
+	} while (running);
+
+	return EXIT_SUCCESS;
 }

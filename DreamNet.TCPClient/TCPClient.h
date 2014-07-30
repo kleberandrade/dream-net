@@ -53,7 +53,7 @@
 #define BUFFER_SIZE			256
 #define NETWORK_OK			0
 #define NETWORK_ERROR		1
-#define SLEEP_TIME			20
+#define SLEEP_TIME			2000
 #define SERVER_PORT			12322
 #define SERVER_ADDRESS		"127.0.0.1"
 
@@ -65,10 +65,8 @@ public:
 	void Close(void);
 	int Connect(void);
 	
-
 private:
-	static DWORD WINAPI Sender(LPVOID param);
-	static DWORD WINAPI Receiver(LPVOID param);
+	static DWORD WINAPI Session(LPVOID param);
 	static bool running;
 	
 	int iResult;							/* For error checking function calls in Winsock library */

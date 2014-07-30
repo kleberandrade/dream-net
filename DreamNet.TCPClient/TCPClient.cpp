@@ -35,9 +35,7 @@ TCPClient::~TCPClient(){
 	Fecha o socket
 */
 void TCPClient::Close(){
-	DebugLog("Connection closed\r\n");
-	closesocket(remote_socket);
-	WSACleanup();
+	running = false;
 }
 
 /**
@@ -53,58 +51,57 @@ int TCPClient::Connect(){
 		return NETWORK_ERROR;
 	}
 
-	running = true;
+	DebugLog("Client connected.\r\n");
+
+	CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)TCPClient::Session, (LPVOID)remote_socket, 0, NULL);
 	return NETWORK_OK;
 }
 
-DWORD WINAPI TCPClient::Sender(LPVOID param){
-	DebugLog("Start sender thread\r\n");
+DWORD WINAPI TCPClient::Session(LPVOID param){
+	DebugLog("Start session.\r\n");
 	SOCKET socket = (SOCKET)param;
-	char buffer[BUFFER_SIZE];
-	int byteSend;
+	char recvbuf[BUFFER_SIZE];
+	char sendbuf[BUFFER_SIZE];
+	int iResult;
+	running = true;
 
-	do{
-		memset(&buffer, 0, BUFFER_SIZE);
+	do {
+		// limpa os buffers
+		memset(&recvbuf, 0, BUFFER_SIZE);
+		memset(&sendbuf, 0, BUFFER_SIZE);
+
 		// envia a mensagem para o servidor
-		byteSend = send(socket, buffer, BUFFER_SIZE, 0);
-		if (byteSend == SOCKET_ERROR){
+		iResult = send(socket, sendbuf, BUFFER_SIZE, 0);
+		if (iResult == SOCKET_ERROR){
 			DebugLog("Failed to send message\r\n");
 			running = false;
 		}
 		else {
 			DebugLog("send() is OK.\n");
-			DebugLog("Sended data is: \"%s\"\r\n", buffer);
-			DebugLog("Bytes Sent: %ld.\n", byteSend);
+			DebugLog("Sended data is: \"%s\"\r\n", sendbuf);
+			DebugLog("Bytes Sent: %ld.\n", iResult);
 		}
 
-		Sleep(SLEEP_TIME);
-	} while (running);
-
-	return EXIT_SUCCESS;
-}
-
-DWORD WINAPI TCPClient::Receiver(LPVOID param){
-	DebugLog("Start receiver thread\r\n");
-	SOCKET socket = (SOCKET)param;
-	char buffer[BUFFER_SIZE];
-	int byteRecv;
-
-	do{
-		memset(&buffer, 0, BUFFER_SIZE);
 		// recebe a mensagem do servidor
-		byteRecv = recv(socket, buffer, BUFFER_SIZE, 0);
-		if (byteRecv == SOCKET_ERROR){
+		iResult = recv(socket, recvbuf, BUFFER_SIZE, 0);
+		if (iResult == SOCKET_ERROR){
 			DebugLog("Failed to receive messsage.\r\n", WSAGetLastError());
 			running = false;
 		}
 		else {
 			DebugLog("ecv() is OK.\n");
-			DebugLog("Received data is: \"%s\"\r\n", buffer);
-			DebugLog("Bytes received: %ld.\r\n", byteRecv);
+			DebugLog("Received data is: \"%s\"\r\n", recvbuf);
+			DebugLog("Bytes received: %ld.\r\n", iResult);
 		}
 
 		Sleep(SLEEP_TIME);
-	} while (running);
+
+	} while (running && iResult > 0);
+
+	DebugLog("Connection closed\r\n");
+	running = false;
+	closesocket(socket);
+	WSACleanup();
 
 	return EXIT_SUCCESS;
 }

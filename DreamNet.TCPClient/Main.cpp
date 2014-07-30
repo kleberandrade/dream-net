@@ -26,9 +26,11 @@ int __cdecl main(int argc, char **argv){
 	printf("********************************************\n\n");
 
 
+
 	TCPClient client = TCPClient();
 	client.Connect();
 
+	system("PAUSE");
 
 	return EXIT_SUCCESS;
 }

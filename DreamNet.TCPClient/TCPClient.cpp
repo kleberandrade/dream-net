@@ -1,5 +1,11 @@
 #include "TCPClient.h"
 
+bool TCPClient::running;
+
+/**
+* Construtor que configura um objeto da classe TCPClient para conectar-se em um servidor
+*
+*/
 TCPClient::TCPClient(){
 
 	remote_socket = INVALID_SOCKET;
@@ -17,6 +23,10 @@ TCPClient::TCPClient(){
 
 	DebugLog("Initialised.\r\n");
 
+	client_service.sin_family = AF_INET;
+	client_service.sin_port = htons(SERVER_PORT);                    //Set the port
+	client_service.sin_addr.s_addr = inet_addr(SERVER_ADDRESS);      //Set the address we want to connect to
+
 	//----------------------
 	// Cria um socket para conexão com o servidor
 	remote_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -27,19 +37,29 @@ TCPClient::TCPClient(){
 	}
 }
 
+/**
+* Destrutor da classe TCPClient
+*
+*/
 TCPClient::~TCPClient(){
-	system("PAUSE");
+	DebugLog("Destoring TCPClient...\r\n");
+	running = false;
+	if (remote_socket)
+		closesocket(remote_socket);
+	WSACleanup();
 }
 
 /**
-	Fecha o socket
+*	Método para encerrar o cliente
+*
 */
 void TCPClient::Close(){
 	running = false;
 }
 
 /**
-	Connect no servidor.
+*	Método para tentar conectar no servidor
+*
 */
 int TCPClient::Connect(){
 	iResult = connect(remote_socket, (SOCKADDR*)&client_service, sizeof(client_service));
@@ -57,6 +77,10 @@ int TCPClient::Connect(){
 	return NETWORK_OK;
 }
 
+/**
+*	Sessão aberta para comunicação com o jogo
+*
+*/
 DWORD WINAPI TCPClient::Session(LPVOID param){
 	DebugLog("Start session.\r\n");
 	SOCKET socket = (SOCKET)param;

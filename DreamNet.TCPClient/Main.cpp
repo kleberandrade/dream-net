@@ -15,10 +15,7 @@
 
 #include <windows.h>
 #include <stdlib.h>
-#include "TCPClient.h"
-
-#define SERVER_ADDRESS	"127.0.0.1"
-#define SERVER_PORT		12322
+#include "ClientNetwork.h"
 
 #ifdef _WCE_SECTION
 /**
@@ -41,9 +38,9 @@ int __cdecl main(int argc, char **argv){
 	printf("********************************************\n\n");
 
 
-	TCPClient client = TCPClient(SERVER_ADDRESS, SERVER_PORT);
-	client.InitializeSockets();
+	ClientNetwork client = ClientNetwork();
 	client.Open();
+
 
 	system("PAUSE");
 

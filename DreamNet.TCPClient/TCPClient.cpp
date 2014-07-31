@@ -1,5 +1,13 @@
 #include "TCPClient.h"
 
+TCPClient::TCPClient(){
+	m_sAddress = LOCAL_HOST;
+	m_usPort = DEFAULT_PORT;
+	m_iNonBlock = 1;
+	m_cNagle = 1;
+	m_Socket = 0;
+}
+
 TCPClient::TCPClient(char *address, unsigned short port, u_long nonBlock, char nagle){
 	m_sAddress = address;
 	m_usPort = port;
@@ -30,13 +38,10 @@ bool TCPClient::IsOpen(void) const {
 bool TCPClient::InitializeSockets(void){
 	WSADATA WsaData;
 	/// Específica e inicializa a versão do winsock a ser usada
-	return WSAStartup(MAKEWORD(2, 2), &WsaData) != NO_ERROR;
+	return WSAStartup(MAKEWORD(2, 2), &WsaData) == 0;
 }
 
 bool TCPClient::Open(void){
-
-	if (IsOpen())
-		return true;
 
 	/// Cria um socket para conexão com o servidor
 	m_Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);

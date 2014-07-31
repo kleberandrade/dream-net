@@ -12,27 +12,16 @@ class NetworkData
 {
 public:
 	NetworkData(void);
+	~NetworkData(void);
+	void Serialize(char *data);
+	void Deserialize(char *data);
 
-	virtual ~NetworkData(void);
-	virtual void serialize(char *data);
-	virtual void deserialize(char *data);
+	unsigned int GetPacketyType() const { return m_uiPacketType; }
+	void SetPacketyType(unsigned int packetType) { m_uiPacketType = packetType; }
 
 protected:
-	unsigned int m_uiPacketType;
+	unsigned int m_uiPacketType;			// 32 bits - 4 bytes
+
+	virtual void OnSerialize(char *data) = 0;
+	virtual void OnDeserialize(char *data) = 0;
 };
-
-
-
-
-
-/*
-struct Packet {
-	void serialize(char *data) {
-		//memcpy(data, this, sizeof(Packet));
-	}
-
-	void deserialize(char *data) {
-		//memcpy(this, data, sizeof(Packet));
-	}
-};
-*/

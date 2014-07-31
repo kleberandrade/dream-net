@@ -27,7 +27,7 @@
     <ClInclude Include="NetworkData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RobotNetworkData.h">
+    <ClInclude Include="RequestMessage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="NetworkData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RobotNetworkData.cpp">
+    <ClCompile Include="RequestMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -12,15 +12,12 @@ public:
 	ClientNetwork(void);
 	~ClientNetwork(void);
 	bool Open(void);
-
 	void SendData();				// Envia os dados genéricos pela rede
 	void ReceiveData();				// Recebe os dados genéricos pela rede
 
-	///static DWORD WINAPI Update(LPVOID param);
-
 private:
 	TCPClient m_tcpClient;
-	NetworkData sendData;
-	NetworkData receiverData;
+	NetworkData *requestData;
+	NetworkData *dispatcherData;
 };
 

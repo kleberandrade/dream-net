@@ -29,3 +29,23 @@ bool ClientNetwork::Open(void){
 
 	return true;
 }
+
+void ClientNetwork::SendData(){
+	char packetData[PACKET_SIZE];
+	sendData.serialize(packetData);
+	m_tcpClient.Send(packetData, strlen(packetData));
+}
+
+void ClientNetwork::SendData(){
+	char packetData[PACKET_SIZE];
+	m_tcpClient.Receiver(packetData, PACKET_SIZE);
+	receiverData.serialize(packetData);
+}
+
+/*
+DWORD WINAPI ClientNetwork::Update(LPVOID param){
+
+
+
+}
+*/

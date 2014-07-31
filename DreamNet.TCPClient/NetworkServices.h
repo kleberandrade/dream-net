@@ -3,7 +3,7 @@
 #include <windows.h>
 
 /**
-*	Wrapper para as funções de send e recv do SOCKET
+*	@brief Wrapper para as funções de send e recv do SOCKET
 *
 */
 class NetworkServices

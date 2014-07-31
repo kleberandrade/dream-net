@@ -2,8 +2,23 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 
+#ifdef _WIN32_WCE
+#define _WCE_SECTION
+#endif
+
+#ifdef _WCE_SECTION
+#pragma comment(lib,"ws2.lib")
+#else
+#pragma comment (lib, "ws2_32.lib")
+#endif
+
+
 #include <windows.h>
+#include <stdlib.h>
 #include "TCPClient.h"
+
+#define SERVER_ADDRESS	"127.0.0.1"
+#define SERVER_PORT		12322
 
 #ifdef _WCE_SECTION
 /**
@@ -26,9 +41,9 @@ int __cdecl main(int argc, char **argv){
 	printf("********************************************\n\n");
 
 
-
-	TCPClient client = TCPClient();
-	client.Connect();
+	TCPClient client = TCPClient(SERVER_ADDRESS, SERVER_PORT);
+	client.InitializeSockets();
+	client.Open();
 
 	system("PAUSE");
 

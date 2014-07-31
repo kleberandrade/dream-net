@@ -1,6 +1,6 @@
 #include "TCPClient.h"
 
-TCPClient::TCPClient(char* address, unsigned short port, u_long nonBlock, char nagle){
+TCPClient::TCPClient(char *address, unsigned short port, u_long nonBlock, char nagle){
 	m_sAddress = address;
 	m_usPort = port;
 	m_iNonBlock = nonBlock;
@@ -32,7 +32,6 @@ bool TCPClient::InitializeSockets(void){
 	/// Específica e inicializa a versão do winsock a ser usada
 	return WSAStartup(MAKEWORD(2, 2), &WsaData) != NO_ERROR;
 }
-
 
 bool TCPClient::Open(void){
 
@@ -85,71 +84,27 @@ bool TCPClient::Open(void){
 	return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int TCPClient::Send(char *message, int messageSize){
+	m_iResult = NetworkServices::receiveMessage(m_Socket, message, messageSize);
 	
-// CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)TCPClient::Session, (LPVOID)remote_socket, 0, NULL);
+	if (m_iResult == SOCKET_ERROR){
+		printf("Send failed with error: %d\n", WSAGetLastError());
+		Close();
+		ShutdownSocket();
+	}
 
-
-/*
-DWORD WINAPI TCPClient::Session(LPVOID param){
-	DebugLog("Start session.\r\n");
-	SOCKET socket = (SOCKET)param;
-	char recvbuf[BUFFER_SIZE];
-	char sendbuf[BUFFER_SIZE];
-	int iResult;
-	running = true;
-
-	do {
-		// limpa os buffers
-		memset(&recvbuf, 0, BUFFER_SIZE);
-		memset(&sendbuf, 0, BUFFER_SIZE);
-
-		// envia a mensagem para o servidor
-		iResult = send(socket, sendbuf, BUFFER_SIZE, 0);
-		if (iResult == SOCKET_ERROR){
-			DebugLog("Failed to send message\r\n");
-			running = false;
-		}
-		else {
-			DebugLog("send() is OK.\n");
-			DebugLog("Sended data is: \"%s\"\r\n", sendbuf);
-			DebugLog("Bytes Sent: %ld.\n", iResult);
-		}
-
-		// recebe a mensagem do servidor
-		iResult = recv(socket, recvbuf, BUFFER_SIZE, 0);
-		if (iResult == SOCKET_ERROR){
-			DebugLog("Failed to receive messsage.\r\n", WSAGetLastError());
-			running = false;
-		}
-		else {
-			DebugLog("ecv() is OK.\n");
-			DebugLog("Received data is: \"%s\"\r\n", recvbuf);
-			DebugLog("Bytes received: %ld.\r\n", iResult);
-		}
-
-		Sleep(SLEEP_TIME);
-
-	} while (running && iResult > 0);
-
-	DebugLog("Connection closed\r\n");
-	running = false;
-	closesocket(socket);
-	WSACleanup();
-
-	return EXIT_SUCCESS;
+	return m_iResult;
 }
-*/
+
+int TCPClient::Receiver(char *buffer, int bufferSize){
+
+	m_iResult = NetworkServices::receiveMessage(m_Socket, buffer, bufferSize);
+	
+	if (m_iResult <= 0){
+		printf("Recv failed with error : %d\n", WSAGetLastError());
+		Close();
+		ShutdownSocket();
+	}
+
+	return m_iResult;
+}

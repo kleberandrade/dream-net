@@ -2,7 +2,6 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 
-
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -23,6 +22,9 @@
 #include <stdio.h>
 #include "ClientNetwork.h"
 #include "RequestMessage.h"
+#include "Buffer.h"
+#include "BufferDecode.h"
+#include "BufferEncode.h"
 
 #ifdef _WCE_SECTION
 /**
@@ -45,9 +47,7 @@ int __cdecl main(int argc, char **argv){
 	printf("********************************************************************************\n\n");
 
 
-	//ClientNetwork client = ClientNetwork();
-	
-	//client.Open();
+/**		Teste da classe TCPClient e NetworkServices
 
 	TCPClient client = TCPClient("127.0.0.1", 13000, 0, 1);
 	client.InitializeSockets();
@@ -74,6 +74,30 @@ int __cdecl main(int argc, char **argv){
 	client.Close();
 
 	printf("Client disconnect...\n");
+*/
+
+	/** Teste da classe Buffer
+	
+	Buffer buffer1 = Buffer();
+	printf("Buffer 1 (vazio): %s\n", buffer1.GetBuffer());
+
+	Buffer buffer2 = Buffer("Kleber");
+	printf("Buffer 2 (Kleber): %s\n", buffer2.GetBuffer());
+
+	buffer2.Clear();
+	printf("Buffer 2 (vazio): %s\n", buffer2.GetBuffer());
+
+	buffer1.SetBuffer("Kleber Andrade");
+	printf("Buffer 1 (Kleber Andrade): %s\n", buffer1.GetBuffer());
+
+	*/
+
+	BufferEncode encode = BufferEncode();
+	encode.EncodeDouble(999.564);
+	encode.EncodeFloat(100.12f);
+	encode.EncodeInt(50);
+
+	printf("Encode: %s\n", encode.GetBuffer());
 
 	system("PAUSE");
 

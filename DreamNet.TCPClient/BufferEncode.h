@@ -24,29 +24,22 @@
 *	THE SOFTWARE.
 */
 
-#include <string.h>
+#include "Buffer.h"
+#include <winsock2.h>
 
-#define BUFFER_SIZE		256
-
-class Buffer
+class BufferEncode : public Buffer
 {
 public:
-	Buffer(void);
-	Buffer(char buffer[]);
-	~Buffer(void);
+	BufferEncode(void);
+	BufferEncode(char buffer[]);
+
+	void EncodeDouble(double dValue);
+	void EncodeFloat(float fValue);
+	void EncodeInt(int iValue);
 
 	void Clear(void);
 
-	inline const char *GetBuffer(void)
-	{
-		return m_strBuffer;
-	}
-
-	inline void SetBuffer(char buffer[])
-	{
-		memcpy(m_strBuffer, buffer, BUFFER_SIZE);
-	}
-
-protected:
-	char m_strBuffer[BUFFER_SIZE];
+private:
+	int m_iPosition;
 };
+

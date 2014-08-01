@@ -40,16 +40,6 @@ Buffer::~Buffer()
 	Clear();
 }
 
-const char *Buffer::GetBuffer(void)
-{
-	return m_strBuffer;
-}
-
-void Buffer::SetBuffer(char buffer[])
-{
-	memcpy(m_strBuffer, buffer, BUFFER_SIZE);
-}
-
 void Buffer::Clear(void)
 {
 	memset(m_strBuffer, 0, BUFFER_SIZE);

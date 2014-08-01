@@ -1,5 +1,3 @@
-#pragma once
-
 /**
 *	The MIT License (MIT)
 *
@@ -24,29 +22,46 @@
 *	THE SOFTWARE.
 */
 
-#include <string.h>
+#include "BufferEncode.h"
 
-#define BUFFER_SIZE		256
 
-class Buffer
+BufferEncode::BufferEncode(void)
+	: Buffer(),
+	m_iPosition(0)
 {
-public:
-	Buffer(void);
-	Buffer(char buffer[]);
-	~Buffer(void);
+	
+}
 
-	void Clear(void);
+BufferEncode::BufferEncode(char buffer[])
+	: Buffer(buffer),
+	m_iPosition(0)
+{
 
-	inline const char *GetBuffer(void)
-	{
-		return m_strBuffer;
-	}
+}
 
-	inline void SetBuffer(char buffer[])
-	{
-		memcpy(m_strBuffer, buffer, BUFFER_SIZE);
-	}
+void BufferEncode::EncodeDouble(double dValue)
+{
+	double value = htond(dValue);
+	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(double));
+	m_iPosition += sizeof(double);
+}
 
-protected:
-	char m_strBuffer[BUFFER_SIZE];
-};
+void BufferEncode::EncodeFloat(float fValue)
+{
+	float value = htond(fValue);
+	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(float));
+	m_iPosition += sizeof(float);
+}
+
+void BufferEncode::EncodeInt(int iValue)
+{
+	double value = htond(iValue);
+	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(int));
+	m_iPosition += sizeof(int);
+}
+
+void BufferEncode::Clear(void)
+{
+	Buffer::Clear();
+	m_iPosition = 0;
+}

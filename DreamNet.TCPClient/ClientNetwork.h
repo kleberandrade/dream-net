@@ -15,9 +15,11 @@ public:
 	void SendData();				// Envia os dados genéricos pela rede
 	void ReceiveData();				// Recebe os dados genéricos pela rede
 
+	//NetworkData GetNetworkData() const { return m_RequestData;  }
+
 private:
 	TCPClient m_tcpClient;
-	NetworkData *requestData;
-	NetworkData *dispatcherData;
+	NetworkData *m_RequestData;
+	NetworkData *m_DispatcherData;
 };
 

@@ -22,8 +22,15 @@ public:
 	int Send(char *message, int messageSize);
 	int Receiver(char *buffer, int bufferSize);
 
-	char* GetAddress() const { return m_sAddress; }
-	unsigned short GetPort() const { return m_usPort; };
+	inline char* GetAddress() const 
+	{ 
+		return m_sAddress; 
+	}
+
+	inline unsigned short GetPort() const 
+	{ 
+		return m_usPort; 
+	};
 	
 private:
 

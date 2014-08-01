@@ -16,8 +16,15 @@ public:
 	void Serialize(char *data);
 	void Deserialize(char *data);
 
-	unsigned int GetPacketyType() const { return m_uiPacketType; }
-	void SetPacketyType(unsigned int packetType) { m_uiPacketType = packetType; }
+	inline unsigned int GetPacketyType() const 
+	{ 
+		return m_uiPacketType; 
+	}
+
+	inline void SetPacketyType(unsigned int packetType)
+	{
+		m_uiPacketType = packetType; 
+	}
 
 protected:
 	unsigned int m_uiPacketType;			// 32 bits - 4 bytes

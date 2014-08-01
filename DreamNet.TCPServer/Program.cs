@@ -12,35 +12,77 @@ namespace DreamNet.TCPServer
     {
         public static void Main()
         {
-            int recv;
-            byte[] data = new byte[1024];
-            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 12322);
-
-            Socket newsock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            newsock.Bind(ipep);
-            newsock.Listen(10);
-            Console.WriteLine("Waiting for a client...");
-            Socket client = newsock.Accept();
-            IPEndPoint clientep = (IPEndPoint)client.RemoteEndPoint;
-            Console.WriteLine("Connected with {0} at port {1}", clientep.Address, clientep.Port);
-
-            string welcome = "Welcome to my test server";
-            data = Encoding.ASCII.GetBytes(welcome);
-            client.Send(data, data.Length, SocketFlags.None);
-            while (true)
+            while(true)
             {
-                data = new byte[1024];
-                recv = client.Receive(data);
-                if (recv == 0)
-                    break;
+                TcpListener server = null;
+                try
+                {
+                    // Set the TcpListener on port 13000.
+                    Int32 port = 13000;
+                    IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 
-                Console.WriteLine(Encoding.ASCII.GetString(data, 0, recv));
-                client.Send(data, recv, SocketFlags.None);
-            }
-            Console.WriteLine("Disconnected from {0}",clientep.Address);
-            client.Close();
-            newsock.Close();
+                    // TcpListener server = new TcpListener(port);
+                    server = new TcpListener(localAddr, port);
+
+                    // Start listening for client requests.
+                    server.Start();
+
+                    // Buffer for reading data
+                    Byte[] bytes = new Byte[256];
+                    String data = null;
+
+                    // Enter the listening loop. 
+                    while (true)
+                    {
+                        Console.Write("Server: Waiting for a connection... ");
+
+                        // Perform a blocking call to accept requests. 
+                        // You could also user server.AcceptSocket() here.
+                        TcpClient client = server.AcceptTcpClient();
+                        Console.WriteLine("Connected!");
+
+                        data = null;
+
+                        // Get a stream object for reading and writing
+                        int i = 0;
+                        using (NetworkStream stream = client.GetStream())
+                        {
+                            while (client.Connected && (i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                            {
+
+                                // Translate data bytes to a ASCII string.
+                                data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                                Console.WriteLine("Received: {0}", data);
+
+                                // Process the data sent by the client.
+                                data = data.ToUpper();
+
+                                byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+
+                                // Send back a response.
+                                stream.Write(msg, 0, msg.Length);
+                                Console.WriteLine("Sent: {0}", data);
+
+                            }
+                        }
+
+
+                        client.Close();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception: {0}", e);
+                }
+                finally
+                {
+                    // Stop listening for new clients.
+                    server.Stop();
+                }
+
+
+                Console.WriteLine("\nHit enter to continue...");
+            }  
         }
     }
 }

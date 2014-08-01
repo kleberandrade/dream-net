@@ -31,6 +31,11 @@ bool ClientNetwork::Open(void){
 	return true;
 }
 
+bool ClientNetwork::IsOpen(void)
+{
+	return m_tcpClient.IsOpen();
+}
+
 void ClientNetwork::ReceiveData(){
 	char packetData[PACKET_SIZE];
 	m_tcpClient.Receiver(packetData, PACKET_SIZE);

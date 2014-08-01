@@ -13,6 +13,7 @@ public:
 	~ClientNetwork(void);
 
 	bool Open(void);
+	bool IsOpen(void);
 	void ReceiveData();		
 
 	inline RequestMessage GetRequestMessage()

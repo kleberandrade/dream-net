@@ -2,16 +2,16 @@
 
 TCPClient::TCPClient()
 	: m_sAddress(LOCAL_HOST), 
-	m_usPort(DEFAULT_PORT), 
-	m_iNonBlock(1),
+	m_iPort(DEFAULT_PORT),
+	m_iNonBlock(false),
 	m_cNagle(1)
 {
 	m_Socket = 0;
 }
 
-TCPClient::TCPClient(const char *address, unsigned short port, u_long nonBlock, char nagle)
+TCPClient::TCPClient(const char *address, int port, u_long nonBlock, char nagle)
 	: m_sAddress(address), 
-	m_usPort(port),
+	m_iPort(port),
 	m_iNonBlock(nonBlock), 
 	m_cNagle(nagle)
 {
@@ -96,18 +96,18 @@ bool TCPClient::Open(void)
 	/// configura as informações do enderço
 	sockaddr_in client_service;
 	client_service.sin_family = AF_INET;
-	client_service.sin_port = htons((unsigned short)m_usPort);
+	client_service.sin_port = htons(m_iPort);
 	client_service.sin_addr.s_addr = inet_addr(m_sAddress);
 	
 	/// Conecta no servidor
-	m_iResult = connect(m_Socket, (SOCKADDR*)&client_service, sizeof(client_service));
+	m_iResult = connect(m_Socket, (sockaddr*)&client_service, sizeof(client_service));
 	if (m_iResult == SOCKET_ERROR) 
 	{
 		printf("The server is down... did not connect.\r\n");
 		Close();
 		return false;
 	}
-
+	
 	// se a conexão falahar
 	if (m_Socket == INVALID_SOCKET)
 	{
@@ -128,14 +128,14 @@ bool TCPClient::Open(void)
 
 	// Desabilita o algoritmo Nagle
 	setsockopt(m_Socket, IPPROTO_TCP, TCP_NODELAY, &m_cNagle, sizeof(m_cNagle));
-
+	
 	printf("Successfully connected.\r\n");
 	return true;
 }
 
 int TCPClient::Send(char *message, int messageSize)
 {
-	m_iResult = NetworkServices::receiveMessage(m_Socket, message, messageSize);
+	m_iResult = NetworkServices::sendMessage(m_Socket, message, messageSize);
 	
 	if (m_iResult == SOCKET_ERROR)
 	{
@@ -150,8 +150,8 @@ int TCPClient::Send(char *message, int messageSize)
 int TCPClient::Receiver(char *buffer, int bufferSize)
 {
 	m_iResult = NetworkServices::receiveMessage(m_Socket, buffer, bufferSize);
-	
-	if (m_iResult <= 0)
+
+	if (m_iResult == SOCKET_ERROR)
 	{
 		printf("Recv failed with error : %d\n", WSAGetLastError());
 		Close();

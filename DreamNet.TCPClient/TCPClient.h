@@ -4,14 +4,14 @@
 #include "NetworkServices.h"
 
 #define LOCAL_HOST		"127.0.0.1"
-#define DEFAULT_PORT	12321
+#define DEFAULT_PORT	13000
 
 class TCPClient
 {
 public:
 
 	TCPClient();
-	TCPClient(const char *address, unsigned short port, u_long nonBlock = true, char nagle = 1);
+	TCPClient(const char *address, int port, u_long nonBlock = false, char nagle = 1);
 	~TCPClient(void);
 	void Close(void);
 	void ShutdownSocket(void);
@@ -27,7 +27,7 @@ private:
 	SOCKET m_Socket;
 	int m_iResult;
 	const char *m_sAddress;
-	unsigned short m_usPort;
+	int m_iPort;
 	char m_cNagle;
 	u_long m_iNonBlock;
 };

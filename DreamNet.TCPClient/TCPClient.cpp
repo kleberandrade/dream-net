@@ -1,52 +1,62 @@
 #include "TCPClient.h"
 
-TCPClient::TCPClient(){
-	m_sAddress = LOCAL_HOST;
-	m_usPort = DEFAULT_PORT;
-	m_iNonBlock = 1;
-	m_cNagle = 1;
+TCPClient::TCPClient()
+	: m_sAddress(LOCAL_HOST), 
+	m_usPort(DEFAULT_PORT), 
+	m_iNonBlock(1),
+	m_cNagle(1)
+{
 	m_Socket = 0;
 }
 
-TCPClient::TCPClient(char *address, unsigned short port, u_long nonBlock, char nagle){
-	m_sAddress = address;
-	m_usPort = port;
-	m_iNonBlock = nonBlock;
-	m_cNagle = nagle;
+TCPClient::TCPClient(const char *address, unsigned short port, u_long nonBlock, char nagle)
+	: m_sAddress(address), 
+	m_usPort(port),
+	m_iNonBlock(nonBlock), 
+	m_cNagle(nagle)
+{
 	m_Socket = 0;
 }
 
-TCPClient::~TCPClient(void){
+TCPClient::~TCPClient(void)
+{
 	Close();
 }
 
-void TCPClient::Close(void){
-	if (IsOpen()){
+void TCPClient::Close(void)
+{
+	if (IsOpen())
+	{
 		closesocket(m_Socket);
 		m_Socket = 0;
 	}
 }
 
-void TCPClient::ShutdownSocket(void){
+void TCPClient::ShutdownSocket(void)
+{
 	WSACleanup();
 }
 
-bool TCPClient::IsOpen(void) const {
+bool TCPClient::IsOpen(void) const
+{
 	return m_Socket != 0;
 }
 
-bool TCPClient::InitializeSockets(void){
+bool TCPClient::InitializeSockets(void)
+{
 	WSADATA wsaData;
 	// Using MAKEWORD macro, Winsock version request 2.2
 	WORD wVersionRequested = MAKEWORD(2, 2);
 	int wsaerr = WSAStartup(wVersionRequested, &wsaData);;
 
-	if (wsaerr != 0){
+	if (wsaerr != 0)
+	{
 		/* Tell the user that we could not find a usable WinSock DLL.*/
 		printf("The Winsock dll not found!\n");
 		return false;
 	}
-	else {
+	else
+	{
 		printf("The Winsock dll found!\n");
 		printf("The status: %s.\n", wsaData.szSystemStatus);
 	}
@@ -72,11 +82,12 @@ bool TCPClient::InitializeSockets(void){
 	return true;
 }
 
-bool TCPClient::Open(void){
-
+bool TCPClient::Open(void)
+{
 	/// Cria um socket para conexão com o servidor
 	m_Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	if (m_Socket == INVALID_SOCKET) {
+	if (m_Socket == INVALID_SOCKET) 
+	{
 		printf("Socket failed with error: %ld\n", WSAGetLastError());
 		ShutdownSocket();
 		return false;
@@ -85,12 +96,13 @@ bool TCPClient::Open(void){
 	/// configura as informações do enderço
 	sockaddr_in client_service;
 	client_service.sin_family = AF_INET;
-	client_service.sin_port = htons((unsigned short)GetPort());
-	client_service.sin_addr.s_addr = inet_addr(GetAddress());
+	client_service.sin_port = htons((unsigned short)m_usPort);
+	client_service.sin_addr.s_addr = inet_addr(m_sAddress);
 	
 	/// Conecta no servidor
 	m_iResult = connect(m_Socket, (SOCKADDR*)&client_service, sizeof(client_service));
-	if (m_iResult == SOCKET_ERROR) {
+	if (m_iResult == SOCKET_ERROR) 
+	{
 		printf("The server is down... did not connect.\r\n");
 		Close();
 		return false;
@@ -106,7 +118,8 @@ bool TCPClient::Open(void){
 
 	// Configura o modo the socket para não bloqueante
 	m_iResult = ioctlsocket(m_Socket, FIONBIO, &m_iNonBlock);
-	if (m_iResult == SOCKET_ERROR){
+	if (m_iResult == SOCKET_ERROR)
+	{
 		printf("ioctlsocket failed with error: %d\n", WSAGetLastError());
 		Close();
 		ShutdownSocket();
@@ -120,10 +133,12 @@ bool TCPClient::Open(void){
 	return true;
 }
 
-int TCPClient::Send(char *message, int messageSize){
+int TCPClient::Send(char *message, int messageSize)
+{
 	m_iResult = NetworkServices::receiveMessage(m_Socket, message, messageSize);
 	
-	if (m_iResult == SOCKET_ERROR){
+	if (m_iResult == SOCKET_ERROR)
+	{
 		printf("Send failed with error: %d\n", WSAGetLastError());
 		Close();
 		ShutdownSocket();
@@ -132,11 +147,12 @@ int TCPClient::Send(char *message, int messageSize){
 	return m_iResult;
 }
 
-int TCPClient::Receiver(char *buffer, int bufferSize){
-
+int TCPClient::Receiver(char *buffer, int bufferSize)
+{
 	m_iResult = NetworkServices::receiveMessage(m_Socket, buffer, bufferSize);
 	
-	if (m_iResult <= 0){
+	if (m_iResult <= 0)
+	{
 		printf("Recv failed with error : %d\n", WSAGetLastError());
 		Close();
 		ShutdownSocket();

@@ -2,70 +2,37 @@
 #include "NetworkData.h"
 #include "NetworkBuffer.h"
 
-enum RequestControlType {
-	
-};
-
 /**
 *	Classe que representa a mensagem enviada do jogo (sistema) para o robô
 */
 class RequestMessage : public NetworkData 
 {
 public:
-	RequestMessage();
-	~RequestMessage();
+	RequestMessage(void);
 
-	void serialize(char *data);
-	void deserialize(char *data);
-
-	inline double GetStiffness() const
+	inline double GetStiffness(void) const
 	{ 
 		return m_dStiffness; 
 	}
 
-	inline double GetPosition() const
+	inline double GetPosition(void) const
 	{ 
 		return m_dPosition; 
 	}
 
-	inline double GetVelocity() const
+	inline double GetVelocity(void) const
 	{ 
 		return m_dVelocity; 
 	}
 
-	inline double GetAcceleration() const 
+	inline double GetAcceleration(void) const
 	{ 
 		return m_dAcceleration; 
 	}
 
-	inline unsigned int GetControlType() const 
+	inline unsigned int GetControlType(void) const
 	{ 
 		return m_uiControlType; 
-	}
-
-	inline void SetStiffness(double stiffness) 
-	{ 
-		m_dStiffness = stiffness;
-	}
-
-	inline void SetPosition(double position) 
-	{
-		m_dPosition = position; 
-	}
-
-	inline void SetVelocity(double velocity) 
-	{
-		m_dVelocity = velocity; 
-	}
-
-	inline void SetAcceleration(double acceleration)
-	{ 
-		m_dAcceleration = acceleration; 
-	}
-
-	inline void SetControlType(unsigned int controlType) 
-	{ 
-		m_uiControlType = controlType; 
 	}
 
 private:
@@ -76,6 +43,7 @@ private:
 	unsigned int m_uiControlType;	// 32 bits - 4 bytes
 
 protected:
-	void OnDeserialize(char *data) = 0;
+	virtual void OnDeserialize(NetworkBuffer buffer);
+	virtual void OnSerialize(NetworkBuffer buffer);
 };
 

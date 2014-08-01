@@ -5,17 +5,13 @@ NetworkData::NetworkData(void)
 
 }
 
-NetworkData::~NetworkData(void)
+void NetworkData::Serialize(NetworkBuffer buffer)
 {
-
+	m_uiPacketType = buffer.DecodeInt();
+	OnSerialize(buffer);	
 }
 
-void NetworkData::Serialize(char *data)
+void NetworkData::Deserialize(NetworkBuffer buffer)
 {
-	OnSerialize(data);	
-}
-
-void NetworkData::Deserialize(char *data)
-{
-	OnDeserialize(data);
+	OnDeserialize(buffer);
 }

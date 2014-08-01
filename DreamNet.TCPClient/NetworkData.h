@@ -1,5 +1,6 @@
 #pragma once
 #include <string.h>
+#include "NetworkBuffer.h"
 
 #define PACKET_SIZE 256
 
@@ -12,9 +13,9 @@ class NetworkData
 {
 public:
 	NetworkData(void);
-	~NetworkData(void);
-	void Serialize(char *data);
-	void Deserialize(char *data);
+
+	void Serialize(NetworkBuffer buffer);
+	void Deserialize(NetworkBuffer buffer);
 
 	inline unsigned int GetPacketyType() const 
 	{ 
@@ -26,9 +27,10 @@ public:
 		m_uiPacketType = packetType; 
 	}
 
-protected:
+private:
 	unsigned int m_uiPacketType;			// 32 bits - 4 bytes
 
-	virtual void OnSerialize(char *data) = 0;
-	virtual void OnDeserialize(char *data) = 0;
+protected:
+	virtual void OnSerialize(NetworkBuffer buffer) = 0;
+	virtual void OnDeserialize(NetworkBuffer buffer) = 0;
 };

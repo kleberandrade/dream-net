@@ -1,7 +1,9 @@
 #include "ClientNetwork.h"
 
-ClientNetwork::ClientNetwork(void){
-	m_tcpClient = TCPClient(SERVER_ADDRESS, SERVER_PORT);
+ClientNetwork::ClientNetwork()
+	: m_tcpClient(SERVER_ADDRESS, SERVER_PORT)
+{
+	
 }
 
 ClientNetwork::~ClientNetwork(void){
@@ -29,18 +31,8 @@ bool ClientNetwork::Open(void){
 	return true;
 }
 
-void ClientNetwork::SendData(){
-	/*
-	char packetData[PACKET_SIZE];
-	sendData.serialize(packetData);
-	m_tcpClient.Send(packetData, strlen(packetData));
-	*/
-}
-
 void ClientNetwork::ReceiveData(){
-	/*
 	char packetData[PACKET_SIZE];
 	m_tcpClient.Receiver(packetData, PACKET_SIZE);
-	receiverData.serialize(packetData);
-	*/
+	m_requestMessage.Deserialize(NetworkBuffer(packetData));
 }

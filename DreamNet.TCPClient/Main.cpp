@@ -16,6 +16,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include "ClientNetwork.h"
+#include "RequestMessage.h"
 
 #ifdef _WCE_SECTION
 /**

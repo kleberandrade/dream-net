@@ -1,6 +1,6 @@
 #pragma once
 #include "TCPClient.h"
-#include "NetworkData.h"
+#include "RequestMessage.h"
 
 #define SERVER_ADDRESS	"127.0.0.1"
 #define SERVER_PORT		12322
@@ -9,17 +9,19 @@
 class ClientNetwork
 {
 public:
-	ClientNetwork(void);
+	ClientNetwork();
 	~ClientNetwork(void);
-	bool Open(void);
-	void SendData();				// Envia os dados genéricos pela rede
-	void ReceiveData();				// Recebe os dados genéricos pela rede
 
-	//NetworkData GetNetworkData() const { return m_RequestData;  }
+	bool Open(void);
+	void ReceiveData();		
+
+	inline RequestMessage GetRequestMessage()
+	{
+		return m_requestMessage;
+	}
 
 private:
 	TCPClient m_tcpClient;
-	NetworkData *m_RequestData;
-	NetworkData *m_DispatcherData;
+	RequestMessage m_requestMessage;
 };
 

@@ -82,6 +82,7 @@
     <ClInclude Include="BufferDecode.h" />
     <ClInclude Include="BufferEncode.h" />
     <ClInclude Include="ClientNetwork.h" />
+    <ClInclude Include="Encoding.h" />
     <ClInclude Include="NetworkBuffer.h" />
     <ClInclude Include="NetworkData.h" />
     <ClInclude Include="NetworkServices.h" />
@@ -93,6 +94,7 @@
     <ClCompile Include="BufferDecode.cpp" />
     <ClCompile Include="BufferEncode.cpp" />
     <ClCompile Include="ClientNetwork.cpp" />
+    <ClCompile Include="Encoding.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NetworkBuffer.cpp" />
     <ClCompile Include="NetworkData.cpp" />

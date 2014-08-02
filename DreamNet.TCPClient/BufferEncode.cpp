@@ -41,22 +41,21 @@ BufferEncode::BufferEncode(char buffer[])
 
 void BufferEncode::EncodeDouble(double dValue)
 {
-	double value = htond((__int64)dValue);
-	printf("Encode: %Lf | %Lf\n\n", dValue, value);
+	double value = Encoding::HostToNetworkDouble(dValue);
 	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(double));
 	m_iPosition += sizeof(double);
 }
 
 void BufferEncode::EncodeFloat(float fValue)
 {
-	float value = htonf(fValue);
+	float value = Encoding::HostToNetworkFloat(fValue);
 	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(float));
 	m_iPosition += sizeof(float);
 }
 
 void BufferEncode::EncodeInt(int iValue)
 {
-	int value = htonl(iValue);
+	int value = Encoding::HostToNetworkInt(iValue);
 	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(int));
 	m_iPosition += sizeof(int);
 }

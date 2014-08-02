@@ -24,31 +24,19 @@
 *	THE SOFTWARE.
 */
 
-#include <string.h>
+#include <winsock2.h>
 
-#define BUFFER_SIZE		256
-
-class Buffer
+class Encoding
 {
 public:
-	Buffer(void);
-	Buffer(char buffer[]);
-	~Buffer(void);
 
-	void Clear(void);
+	static int HostToNetworkInt(int iValue);
+	static int NetworkToHostInt(int iValue);
 
-	inline const char *GetBuffer(void)
-	{
-		return m_strBuffer;
-	}
+	static float HostToNetworkFloat(float fValue);
+	static float NetworkToHostFloat(float fValue);
 
-	inline void SetBuffer(char buffer[])
-	{
-		memcpy(m_strBuffer, buffer, BUFFER_SIZE);
-	}
-
-
-
-protected:
-	char m_strBuffer[BUFFER_SIZE];
+	static double HostToNetworkDouble(double dValue);
+	static double NetworkToHostDouble(double dValue);
 };
+

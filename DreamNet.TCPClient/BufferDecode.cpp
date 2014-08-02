@@ -41,22 +41,18 @@ BufferDecode::BufferDecode(char buffer[])
 
 double BufferDecode::DecodeDouble()
 {
-	//double value = ntohd(*(__int64*)&m_strBuffer[m_iPosition]);
-
-	double value = ntohd((__int64)m_strBuffer[m_iPosition]);
-	printf("Decode: %Lf\n\n", value);
-	//memcpy(&value, &m_strBuffer[m_iPosition], sizeof(double));
+	double value;
+	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(double));
 	m_iPosition += sizeof(double);
-	return ntohd(value);
+	return Encoding::NetworkToHostDouble(value);
 }
 
 float BufferDecode::DecodeFloat()
 {
-	float value = (__int32)ntohd(m_strBuffer[m_iPosition]);
-	//memcpy(&value, , sizeof(float));
-
+	float value;
+	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(float));
 	m_iPosition += sizeof(float);
-	return ntohf(value);
+	return Encoding::NetworkToHostFloat(value);
 }
 
 int BufferDecode::DecodeInt()
@@ -64,7 +60,7 @@ int BufferDecode::DecodeInt()
 	int value;
 	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(int));
 	m_iPosition += sizeof(int);
-	return ntohl(value);
+	return Encoding::NetworkToHostInt(value);
 }
 
 

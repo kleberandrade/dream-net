@@ -1,5 +1,3 @@
-#pragma once
-
 /**
 *	The MIT License (MIT)
 *
@@ -24,35 +22,11 @@
 *	THE SOFTWARE.
 */
 
-#include <winsock2.h>
+#include "NetworkDispatcherData.h"
 
-/**
-*	@brief Wrapper para as funções de send e recv do SOCKET
-*
-*/
-class NetworkServices
+
+void NetworkDispatcherData::Serialize(BufferEncode encode)
 {
-public:
-	/**
-	*	@brief	Função send encapsulada
-	*
-	*	@param	socket
-	*	@param	message
-	*	@param	messageSize
-	*
-	*	@return
-	*/
-	static int sendMessage(SOCKET socket, char *message, int messageSize);
 
-	/**
-	*	@brief	Função recv encapsulada
-	*
-	*	@param	socket
-	*	@param	buffer
-	*	@param	bufferSize
-	*
-	*	@return
-	*/
-	static int receiveMessage(SOCKET socket, char *buffer, int messageSize);
-};
-
+	OnSerialize(encode);
+}

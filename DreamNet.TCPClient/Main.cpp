@@ -61,8 +61,6 @@ int __cdecl main(int argc, char **argv){
 		printf("Digite uma mensagem: ");
 		gets(message);
 
-
-
 		//int iResult = client.Send(message, strlen(message));
 		int iResult = client.Send(message, 256);
 		printf("%d bytes enviados.\n", iResult);
@@ -154,7 +152,6 @@ int __cdecl main(int argc, char **argv){
 		printf("Digite um double: ");
 		double doubleToSend;
 		scanf("%Lf", &doubleToSend);
-
 
 		BufferEncode encode = BufferEncode();
 		encode.EncodeInt(intTosend);

@@ -24,35 +24,14 @@
 *	THE SOFTWARE.
 */
 
-#include <winsock2.h>
+#include "BufferEncode.h"
 
-/**
-*	@brief Wrapper para as funções de send e recv do SOCKET
-*
-*/
-class NetworkServices
+
+class NetworkDispatcherData
 {
 public:
-	/**
-	*	@brief	Função send encapsulada
-	*
-	*	@param	socket
-	*	@param	message
-	*	@param	messageSize
-	*
-	*	@return
-	*/
-	static int sendMessage(SOCKET socket, char *message, int messageSize);
+	void Serialize(BufferEncode encode);
 
-	/**
-	*	@brief	Função recv encapsulada
-	*
-	*	@param	socket
-	*	@param	buffer
-	*	@param	bufferSize
-	*
-	*	@return
-	*/
-	static int receiveMessage(SOCKET socket, char *buffer, int messageSize);
+protected:
+	virtual void OnSerialize(BufferEncode encode) = 0;
 };
-

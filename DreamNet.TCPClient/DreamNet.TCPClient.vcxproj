@@ -85,8 +85,9 @@
     <ClInclude Include="Encoding.h" />
     <ClInclude Include="NetworkBuffer.h" />
     <ClInclude Include="NetworkData.h" />
+    <ClInclude Include="NetworkDispatcherData.h" />
     <ClInclude Include="NetworkServices.h" />
-    <ClInclude Include="RequestMessage.h" />
+    <ClInclude Include="NetworkRequestData.h" />
     <ClInclude Include="TCPClient.h" />
   </ItemGroup>
   <ItemGroup>
@@ -98,8 +99,9 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NetworkBuffer.cpp" />
     <ClCompile Include="NetworkData.cpp" />
+    <ClCompile Include="NetworkDispatcherData.cpp" />
     <ClCompile Include="NetworkServices.cpp" />
-    <ClCompile Include="RequestMessage.cpp" />
+    <ClCompile Include="NetworkRequestData.cpp" />
     <ClCompile Include="TCPClient.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

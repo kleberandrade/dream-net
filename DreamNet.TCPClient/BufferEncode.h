@@ -26,6 +26,7 @@
 
 #include "Buffer.h"
 #include <winsock2.h>
+#include <stdio.h>
 
 class BufferEncode : public Buffer
 {

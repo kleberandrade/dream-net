@@ -8,9 +8,9 @@ public:
 	NetworkBuffer(const char *buffer);
 
 	// Decode
-	double DecodeDouble();
-	float DecodeFloat();
-	int DecodeInt();
+	double DecodeDouble(void);
+	float DecodeFloat(void);
+	int DecodeInt(void);
 
 private:
 	const char *m_parchBuffer;

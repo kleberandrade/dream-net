@@ -92,12 +92,37 @@ int __cdecl main(int argc, char **argv){
 
 	*/
 
-	BufferEncode encode = BufferEncode();
-	encode.EncodeDouble(999.564);
-	encode.EncodeFloat(100.12f);
-	encode.EncodeInt(50);
+	double doubleToEncode = 999.564;
+	float floatToEncode = 100.12f;
+	int intToEncode = 50;
+	int int2ToEncode = 36;
 
-	printf("Encode: %s\n", encode.GetBuffer());
+	printf("Values: %Lf | %d | %f | %d\n", doubleToEncode, intToEncode, floatToEncode, int2ToEncode);
+
+	BufferEncode encode = BufferEncode();
+	encode.EncodeDouble(doubleToEncode);
+	encode.EncodeInt(intToEncode);
+	encode.EncodeFloat(floatToEncode);
+	encode.EncodeInt(int2ToEncode);
+	
+
+	
+	printf("Buffer (encode): %s\n", encode.GetBuffer());
+
+	char bufferToDecode[BUFFER_SIZE];
+	memcpy(&bufferToDecode, encode.GetBuffer(), BUFFER_SIZE);
+
+	printf("Copy Buffer (encode): %s\n", bufferToDecode);
+
+	BufferDecode decode = BufferDecode(bufferToDecode);
+	double doubletoDecode = decode.DecodeDouble();
+	int intToDecode = decode.DecodeInt();
+	float floatToDecode = decode.DecodeFloat();
+	int int2ToDecode = decode.DecodeInt();
+
+	printf("Buffer (decode): %s\n", decode.GetBuffer());
+
+	printf("Values: %Lf | %d | %f | %d\n", doubletoDecode, intToDecode, floatToDecode, int2ToDecode);
 
 	system("PAUSE");
 

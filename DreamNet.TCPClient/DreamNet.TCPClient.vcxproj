@@ -78,6 +78,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Buffer.h" />
+    <ClInclude Include="BufferDecode.h" />
+    <ClInclude Include="BufferEncode.h" />
     <ClInclude Include="ClientNetwork.h" />
     <ClInclude Include="NetworkBuffer.h" />
     <ClInclude Include="NetworkData.h" />
@@ -86,6 +89,9 @@
     <ClInclude Include="TCPClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="BufferDecode.cpp" />
+    <ClCompile Include="BufferEncode.cpp" />
     <ClCompile Include="ClientNetwork.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NetworkBuffer.cpp" />

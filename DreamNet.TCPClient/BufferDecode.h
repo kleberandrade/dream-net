@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 *	The MIT License (MIT)
 *
@@ -22,47 +24,23 @@
 *	THE SOFTWARE.
 */
 
-#include "BufferEncode.h"
+#include "Buffer.h"
+#include <winsock2.h>
+#include <stdio.h>
 
-
-BufferEncode::BufferEncode(void)
-	: Buffer(),
-	m_iPosition(0)
+class BufferDecode : public Buffer
 {
-	Clear();
-}
+public:
+	BufferDecode(void);
+	BufferDecode(char buffer[]);
 
-BufferEncode::BufferEncode(char buffer[])
-	: Buffer(buffer),
-	m_iPosition(0)
-{
+	double DecodeDouble(void);
+	float DecodeFloat(void);
+	int DecodeInt(void);
 
-}
+	void Clear(void);
 
-void BufferEncode::EncodeDouble(double dValue)
-{
-	double value = htond((__int64)dValue);
-	printf("Encode: %Lf | %Lf\n\n", dValue, value);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(double));
-	m_iPosition += sizeof(double);
-}
+private:
+	int m_iPosition;
+};
 
-void BufferEncode::EncodeFloat(float fValue)
-{
-	float value = htonf(fValue);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(float));
-	m_iPosition += sizeof(float);
-}
-
-void BufferEncode::EncodeInt(int iValue)
-{
-	int value = htonl(iValue);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(int));
-	m_iPosition += sizeof(int);
-}
-
-void BufferEncode::Clear(void)
-{
-	Buffer::Clear();
-	m_iPosition = 0;
-}

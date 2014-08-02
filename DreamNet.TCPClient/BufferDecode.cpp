@@ -22,46 +22,53 @@
 *	THE SOFTWARE.
 */
 
-#include "BufferEncode.h"
+#include "BufferDecode.h"
 
 
-BufferEncode::BufferEncode(void)
+BufferDecode::BufferDecode(void)
 	: Buffer(),
 	m_iPosition(0)
 {
 	Clear();
 }
 
-BufferEncode::BufferEncode(char buffer[])
+BufferDecode::BufferDecode(char buffer[])
 	: Buffer(buffer),
 	m_iPosition(0)
 {
 
 }
 
-void BufferEncode::EncodeDouble(double dValue)
+double BufferDecode::DecodeDouble()
 {
-	double value = htond((__int64)dValue);
-	printf("Encode: %Lf | %Lf\n\n", dValue, value);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(double));
+	//double value = ntohd(*(__int64*)&m_strBuffer[m_iPosition]);
+
+	double value = ntohd((__int64)m_strBuffer[m_iPosition]);
+	printf("Decode: %Lf\n\n", value);
+	//memcpy(&value, &m_strBuffer[m_iPosition], sizeof(double));
 	m_iPosition += sizeof(double);
+	return ntohd(value);
 }
 
-void BufferEncode::EncodeFloat(float fValue)
+float BufferDecode::DecodeFloat()
 {
-	float value = htonf(fValue);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(float));
+	float value = (__int32)ntohd(m_strBuffer[m_iPosition]);
+	//memcpy(&value, , sizeof(float));
+
 	m_iPosition += sizeof(float);
+	return ntohf(value);
 }
 
-void BufferEncode::EncodeInt(int iValue)
+int BufferDecode::DecodeInt()
 {
-	int value = htonl(iValue);
-	memcpy(&m_strBuffer[m_iPosition], &value, sizeof(int));
+	int value;
+	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(int));
 	m_iPosition += sizeof(int);
+	return ntohl(value);
 }
 
-void BufferEncode::Clear(void)
+
+void BufferDecode::Clear(void)
 {
 	Buffer::Clear();
 	m_iPosition = 0;

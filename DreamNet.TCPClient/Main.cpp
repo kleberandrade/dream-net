@@ -6,16 +6,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#ifdef _WIN32_WCE
-#define _WCE_SECTION
-#endif
+// #define __BIG_ENDIAN
+#define __LITTLE_ENDIAN
 
 #ifdef _WCE_SECTION
 #pragma comment(lib,"ws2.lib")
 #else
 #pragma comment (lib, "Ws2_32.lib")
 #endif
-
 
 #include <windows.h>
 #include <stdlib.h>
@@ -47,7 +45,8 @@ int __cdecl main(int argc, char **argv){
 	printf("********************************************************************************\n\n");
 
 
-/**		Teste da classe TCPClient e NetworkServices
+/**************************************************************************
+			Teste da classe TCPClient e NetworkServices
 
 	TCPClient client = TCPClient("127.0.0.1", 13000, 0, 1);
 	client.InitializeSockets();
@@ -61,6 +60,8 @@ int __cdecl main(int argc, char **argv){
 		char message[256];
 		printf("Digite uma mensagem: ");
 		gets(message);
+
+
 
 		//int iResult = client.Send(message, strlen(message));
 		int iResult = client.Send(message, 256);
@@ -76,7 +77,8 @@ int __cdecl main(int argc, char **argv){
 	printf("Client disconnect...\n");
 */
 
-	/** Teste da classe Buffer
+/***************************************************************************
+			Teste da classe Buffer
 	
 	Buffer buffer1 = Buffer();
 	printf("Buffer 1 (vazio): %s\n", buffer1.GetBuffer());
@@ -90,7 +92,10 @@ int __cdecl main(int argc, char **argv){
 	buffer1.SetBuffer("Kleber Andrade");
 	printf("Buffer 1 (Kleber Andrade): %s\n", buffer1.GetBuffer());
 
-	*/
+*/
+
+/***************************************************************************
+			Teste das classes BufferDecode, BufferEncode e Encoding
 
 	double doubleToEncode = 999.564;
 	float floatToEncode = 100.12f;
@@ -104,8 +109,6 @@ int __cdecl main(int argc, char **argv){
 	encode.EncodeInt(intToEncode);
 	encode.EncodeFloat(floatToEncode);
 	encode.EncodeInt(int2ToEncode);
-	
-
 	
 	printf("Buffer (encode): %s\n", encode.GetBuffer());
 
@@ -123,6 +126,63 @@ int __cdecl main(int argc, char **argv){
 	printf("Buffer (decode): %s\n", decode.GetBuffer());
 
 	printf("Values: %Lf | %d | %f | %d\n", doubletoDecode, intToDecode, floatToDecode, int2ToDecode);
+
+*/
+
+/***************************************************************************
+	Teste das classes trabalhando junto:
+		NetworkServices
+		TCPClient
+		Buffer
+		BufferDecode
+		BufferEncode
+		Encoding
+	
+	TCPClient client = TCPClient("127.0.0.1", 13000, 0, 1);
+	client.InitializeSockets();
+	client.Open();
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (!client.IsOpen())
+			break;
+
+		printf("Digite um int: ");
+		int intTosend;
+		scanf("%d", &intTosend);
+
+		printf("Digite um double: ");
+		double doubleToSend;
+		scanf("%Lf", &doubleToSend);
+
+
+		BufferEncode encode = BufferEncode();
+		encode.EncodeInt(intTosend);
+		encode.EncodeDouble(doubleToSend);
+
+		char message[BUFFER_SIZE];
+		memcpy(&message, encode.GetBuffer(), BUFFER_SIZE);
+
+		int iResult = client.Send(message, 256);
+		printf("%d bytes enviados.\n", iResult);
+
+		char buffer[256];
+		iResult = client.Receiver(buffer, 256);
+
+		BufferDecode decode = BufferDecode(buffer);
+		int iValor = decode.DecodeInt();
+		double dValor = decode.DecodeDouble();
+
+		printf("Receive: %s | Int: %d | Double: %Lf\n", buffer, iValor, dValor);
+	}
+	
+
+	//client.ShutdownSocket();
+	client.Close();
+
+	printf("Client disconnect...\n");
+	
+*/
 
 	system("PAUSE");
 

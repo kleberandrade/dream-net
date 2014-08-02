@@ -27,16 +27,25 @@
 
 int Encoding::HostToNetworkInt(int iValue)
 {
+#if __BIG_ENDIAN
 	return htonl(iValue);
+#else
+	return iValue;
+#endif
 }
 
 int Encoding::NetworkToHostInt(int iValue)
 {
+#if __BIG_ENDIAN
 	return ntohl(iValue);
+#else
+	return iValue;
+#endif
 }
 
 float Encoding::HostToNetworkFloat(float fValue)
 {
+#if __BIG_ENDIAN
 	unsigned short i;                            
 	unsigned short j;
 	unsigned short convert;
@@ -56,12 +65,15 @@ float Encoding::HostToNetworkFloat(float fValue)
 		zone.p[j] = convert & 0x00ff;
 	}
 
-
 	return(zone.val);
+#else
+	return fValue;
+#endif
 }
 
 float Encoding::NetworkToHostFloat(float fValue)
 {
+#if __BIG_ENDIAN
 	unsigned short i;                          
 	unsigned short  j;                            
 	unsigned short  convert;                  
@@ -82,10 +94,14 @@ float Encoding::NetworkToHostFloat(float fValue)
 	}
 
 	return(zone.val);
+#else
+	return fValue;
+#endif
 }
 
 double Encoding::HostToNetworkDouble(double dValue)
 {
+#if __BIG_ENDIAN
 	unsigned short i;           
 	unsigned short j;
 	unsigned short convert;
@@ -106,10 +122,14 @@ double Encoding::HostToNetworkDouble(double dValue)
 	}
 
 	return(zone.val);
+#else
+	return dValue;
+#endif
 }
 
 double Encoding::NetworkToHostDouble(double dValue)
 {
+#if __BIG_ENDIAN
 	unsigned short  i;                        
 	unsigned short  j;                        
 	unsigned short  convert;                     
@@ -129,6 +149,9 @@ double Encoding::NetworkToHostDouble(double dValue)
         zone.p[j]=convert & 0x00ff;
     }
  
-    return(zone.val);                      
+    return(zone.val);      
+#else
+	return dValue;
+#endif
 }
 

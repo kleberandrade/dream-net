@@ -1,6 +1,7 @@
 #pragma once
 #include "TCPClient.h"
-#include "RequestMessage.h"
+#include "NetworkDispatcherData.h"
+#include "NetworkRequestData.h"
 
 #define SERVER_ADDRESS	"127.0.0.1"
 #define SERVER_PORT		12322
@@ -14,15 +15,10 @@ public:
 
 	bool Open(void);
 	bool IsOpen(void);
-	void ReceiveData();		
-
-	inline RequestMessage GetRequestMessage()
-	{
-		return m_requestMessage;
-	}
-
+	
 private:
 	TCPClient m_tcpClient;
-	RequestMessage m_requestMessage;
+	NetworkRequestData *m_requestData;
+	NetworkDispatcherData *m_dispatcherData;
 };
 

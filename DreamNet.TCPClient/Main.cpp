@@ -19,7 +19,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ClientNetwork.h"
-#include "RequestMessage.h"
 #include "Buffer.h"
 #include "BufferDecode.h"
 #include "BufferEncode.h"

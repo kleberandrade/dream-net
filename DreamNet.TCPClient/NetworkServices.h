@@ -42,7 +42,7 @@ public:
 	*
 	*	@return
 	*/
-	static int sendMessage(SOCKET socket, char *message, int messageSize);
+	static int SendMessage(SOCKET socket, char *message, int messageSize);
 
 	/**
 	*	@brief	Função recv encapsulada
@@ -53,6 +53,6 @@ public:
 	*
 	*	@return
 	*/
-	static int receiveMessage(SOCKET socket, char *buffer, int messageSize);
+	static int ReceiveMessage(SOCKET socket, char *buffer, int messageSize);
 };
 

@@ -87,9 +87,11 @@
     <ClInclude Include="BufferEncode.h" />
     <ClInclude Include="ClientNetwork.h" />
     <ClInclude Include="Encoding.h" />
+    <ClInclude Include="GameRequestMessage.h" />
     <ClInclude Include="NetworkDispatcherData.h" />
     <ClInclude Include="NetworkServices.h" />
     <ClInclude Include="NetworkRequestData.h" />
+    <ClInclude Include="RobotDispatcherMessage.h" />
     <ClInclude Include="TCPClient.h" />
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +100,12 @@
     <ClCompile Include="BufferEncode.cpp" />
     <ClCompile Include="ClientNetwork.cpp" />
     <ClCompile Include="Encoding.cpp" />
+    <ClCompile Include="GameRequestMessage.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NetworkDispatcherData.cpp" />
     <ClCompile Include="NetworkServices.cpp" />
     <ClCompile Include="NetworkRequestData.cpp" />
+    <ClCompile Include="RobotDispatcherMessage.cpp" />
     <ClCompile Include="TCPClient.cpp" />
   </ItemGroup>
   <ItemGroup>

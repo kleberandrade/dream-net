@@ -24,54 +24,45 @@
 *	THE SOFTWARE.
 */
 
-#include "TCPClient.h"
-#include "NetworkDispatcherData.h"
 #include "NetworkRequestData.h"
-#include "GameRequestMessage.h"
-#include "RobotDispatcherMessage.h"
 
-#define SERVER_ADDRESS	"127.0.0.1"
-#define SERVER_PORT		12322
-#define SLEEP_TIME		1000
 
-class ClientNetwork
+class GameRequestMessage : public NetworkRequestData
 {
 public:
-	ClientNetwork();
-	~ClientNetwork(void);
-
-	bool Open(void);
-	bool IsOpen(void);
-	void Close(void);
-
-	void Send(void);
-	void Receive(void);
-
-	inline NetworkDispatcherData *GetDispatcherData(void)
+	inline double GetPosition() const
 	{
-		return m_dispatcherData;
+		return m_dPosition;
 	}
 
-	inline NetworkRequestData *GetRequestData(void)
+	inline double GetStiffness() const
 	{
-		return m_requestData;
+		return m_dStiffness;
 	}
 
-	inline void SetDispatcher(NetworkDispatcherData *dispatcherData)
+	inline double GetVelocity() const
 	{
-		m_dispatcherData = dispatcherData;
+		return m_dVelocity;
 	}
 
-	inline void SetRequest(NetworkRequestData *requestData)
+	inline double GetAcceleration() const
 	{
-		m_requestData = requestData;
+		return m_dAcceleration;
 	}
+
+	inline int GetControl() const
+	{
+		return m_iControl;
+	}
+
+protected:
+	void OnDeserialize(BufferDecode &decode);
 
 private:
-	TCPClient m_tcpClient;
-	BufferDecode m_Decode;
-	BufferEncode m_Encode;
-	NetworkRequestData *m_requestData;
-	NetworkDispatcherData *m_dispatcherData;
+	double m_dPosition;
+	double m_dStiffness;
+	double m_dVelocity;
+	double m_dAcceleration;
+	int m_iControl;
 };
 

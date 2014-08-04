@@ -24,54 +24,26 @@
 *	THE SOFTWARE.
 */
 
-#include "TCPClient.h"
 #include "NetworkDispatcherData.h"
-#include "NetworkRequestData.h"
-#include "GameRequestMessage.h"
-#include "RobotDispatcherMessage.h"
 
-#define SERVER_ADDRESS	"127.0.0.1"
-#define SERVER_PORT		12322
-#define SLEEP_TIME		1000
-
-class ClientNetwork
+class RobotDispatcherMessage : public NetworkDispatcherData
 {
 public:
-	ClientNetwork();
-	~ClientNetwork(void);
-
-	bool Open(void);
-	bool IsOpen(void);
-	void Close(void);
-
-	void Send(void);
-	void Receive(void);
-
-	inline NetworkDispatcherData *GetDispatcherData(void)
+	inline void SetPosition(double position)
 	{
-		return m_dispatcherData;
+		m_dPosition = position;
 	}
 
-	inline NetworkRequestData *GetRequestData(void)
+	inline void SetStatus(int status)
 	{
-		return m_requestData;
+		m_iStatus = status;
 	}
 
-	inline void SetDispatcher(NetworkDispatcherData *dispatcherData)
-	{
-		m_dispatcherData = dispatcherData;
-	}
-
-	inline void SetRequest(NetworkRequestData *requestData)
-	{
-		m_requestData = requestData;
-	}
+protected:
+	void OnSerialize(BufferEncode &encode);
 
 private:
-	TCPClient m_tcpClient;
-	BufferDecode m_Decode;
-	BufferEncode m_Encode;
-	NetworkRequestData *m_requestData;
-	NetworkDispatcherData *m_dispatcherData;
+	double m_dPosition;
+	int m_iStatus;
 };
 

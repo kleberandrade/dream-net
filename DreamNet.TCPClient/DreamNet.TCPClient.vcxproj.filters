@@ -42,6 +42,12 @@
     <ClInclude Include="NetworkDispatcherData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RobotDispatcherMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRequestMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TCPClient.cpp">
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NetworkDispatcherData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotDispatcherMessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRequestMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

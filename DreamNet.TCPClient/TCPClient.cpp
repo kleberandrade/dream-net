@@ -159,7 +159,7 @@ bool TCPClient::Open(void)
 
 int TCPClient::Send(char *message, int messageSize)
 {
-	m_iResult = NetworkServices::sendMessage(m_Socket, message, messageSize);
+	m_iResult = NetworkServices::SendMessage(m_Socket, message, messageSize);
 	
 	if (m_iResult == SOCKET_ERROR)
 	{
@@ -173,7 +173,7 @@ int TCPClient::Send(char *message, int messageSize)
 
 int TCPClient::Receiver(char *buffer, int bufferSize)
 {
-	m_iResult = NetworkServices::receiveMessage(m_Socket, buffer, bufferSize);
+	m_iResult = NetworkServices::ReceiveMessage(m_Socket, buffer, bufferSize);
 
 	if (m_iResult == SOCKET_ERROR)
 	{

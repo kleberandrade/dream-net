@@ -26,7 +26,7 @@
 
 #include <string.h>
 
-#define BUFFER_SIZE		256
+#define BUFFER_SIZE		64
 
 class Buffer
 {
@@ -46,8 +46,6 @@ public:
 	{
 		memcpy(m_strBuffer, buffer, BUFFER_SIZE);
 	}
-
-
 
 protected:
 	char m_strBuffer[BUFFER_SIZE];

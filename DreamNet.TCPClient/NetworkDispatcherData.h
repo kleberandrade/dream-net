@@ -30,8 +30,8 @@
 class NetworkDispatcherData
 {
 public:
-	void Serialize(BufferEncode encode);
+	void Serialize(BufferEncode &encode);
 
 protected:
-	virtual void OnSerialize(BufferEncode encode) = 0;
+	virtual void OnSerialize(BufferEncode &encode) = 0;
 };

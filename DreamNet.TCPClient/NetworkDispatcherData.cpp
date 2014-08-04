@@ -25,8 +25,8 @@
 #include "NetworkDispatcherData.h"
 
 
-void NetworkDispatcherData::Serialize(BufferEncode encode)
+void NetworkDispatcherData::Serialize(BufferEncode &encode)
 {
-
+	encode.Clear();
 	OnSerialize(encode);
 }

@@ -26,12 +26,13 @@
 
 #include "BufferDecode.h"
 
+
 class NetworkRequestData
 {
 public:
-	void Deserialize(BufferDecode decode);
+	void Deserialize(BufferDecode &decode);
 
 protected:
-	virtual void OnDeserialize(BufferDecode decode) = 0;
+	virtual void OnDeserialize(BufferDecode &decode) = 0;
 };
 

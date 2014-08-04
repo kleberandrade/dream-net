@@ -18,6 +18,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "ClientNetwork.h"
 #include "Buffer.h"
 #include "BufferDecode.h"
@@ -180,7 +181,61 @@ int __cdecl main(int argc, char **argv){
 	
 */
 
+
+	ClientNetwork client = ClientNetwork();
+	client.SetDispatcher(new RobotDispatcherMessage);
+	client.SetRequest(new GameRequestMessage);
+	client.Open();
+
+	int cont = 0;
+	clock_t start,
+		stop;
+
+	while (client.IsOpen())
+	{
+		start = clock();
+
+		// Define as informações do robo
+		((RobotDispatcherMessage*)client.GetDispatcherData())->SetStatus(cont);
+		((RobotDispatcherMessage*)client.GetDispatcherData())->SetPosition(cont * 10.0);
+
+		// Envia e recebe dados pela rede
+		client.Send();
+		client.Receive();
+
+		// Recebe os dados nas variáveis
+		double position = ((GameRequestMessage*)client.GetRequestData())->GetPosition();
+		double stiffness = ((GameRequestMessage*)client.GetRequestData())->GetStiffness();
+		double velocity = ((GameRequestMessage*)client.GetRequestData())->GetVelocity();
+		double acceleration = ((GameRequestMessage*)client.GetRequestData())->GetAcceleration();
+		int control = ((GameRequestMessage*)client.GetRequestData())->GetControl();
+
+		stop = clock();
+
+		//Exibe as informações na tela
+		system("CLS");
+		printf("ROBOT #######################\n");
+		printf("Status: %d\n", cont);
+		printf("Position: %Lf\n", cont * 10.0);
+		
+		printf("\nGAME ########################\n");
+		printf("Position: %Lf\n", position);
+		printf("Stiffness: %Lf\n", stiffness);
+		printf("Velocity: %Lf\n", velocity);
+		printf("Acceleration: %Lf\n", acceleration); 
+		printf("Control: %d\n", control);
+
+
+		printf("Tempo %.3f (ms)\n", ((double)(stop - start) / CLOCKS_PER_SEC));
+
+		// Atualiza o contador
+		cont++;
+	}
+
+	client.Close();
+
 	system("PAUSE");
 
 	return EXIT_SUCCESS;
 }
+

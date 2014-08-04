@@ -1,5 +1,3 @@
-#pragma once
-
 /**
 *	The MIT License (MIT)
 *
@@ -24,54 +22,15 @@
 *	THE SOFTWARE.
 */
 
-#include "TCPClient.h"
-#include "NetworkDispatcherData.h"
-#include "NetworkRequestData.h"
+
 #include "GameRequestMessage.h"
-#include "RobotDispatcherMessage.h"
 
-#define SERVER_ADDRESS	"127.0.0.1"
-#define SERVER_PORT		12322
-#define SLEEP_TIME		1000
 
-class ClientNetwork
+void GameRequestMessage::OnDeserialize(BufferDecode &decode)
 {
-public:
-	ClientNetwork();
-	~ClientNetwork(void);
-
-	bool Open(void);
-	bool IsOpen(void);
-	void Close(void);
-
-	void Send(void);
-	void Receive(void);
-
-	inline NetworkDispatcherData *GetDispatcherData(void)
-	{
-		return m_dispatcherData;
-	}
-
-	inline NetworkRequestData *GetRequestData(void)
-	{
-		return m_requestData;
-	}
-
-	inline void SetDispatcher(NetworkDispatcherData *dispatcherData)
-	{
-		m_dispatcherData = dispatcherData;
-	}
-
-	inline void SetRequest(NetworkRequestData *requestData)
-	{
-		m_requestData = requestData;
-	}
-
-private:
-	TCPClient m_tcpClient;
-	BufferDecode m_Decode;
-	BufferEncode m_Encode;
-	NetworkRequestData *m_requestData;
-	NetworkDispatcherData *m_dispatcherData;
-};
-
+	m_iControl = decode.DecodeInt();
+	m_dPosition = decode.DecodeDouble();
+	m_dStiffness = decode.DecodeDouble();
+	m_dVelocity = decode.DecodeDouble();
+	m_dAcceleration = decode.DecodeDouble();
+}

@@ -25,8 +25,8 @@
 #include "NetworkRequestData.h"
 
 
-void NetworkRequestData::Deserialize(BufferDecode decode)
+void NetworkRequestData::Deserialize(BufferDecode &decode)
 {
-
+	decode.Clear();
 	OnDeserialize(decode);
 }

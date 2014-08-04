@@ -27,6 +27,6 @@
 
 void NetworkRequestData::Deserialize(BufferDecode &decode)
 {
-	decode.Clear();
 	OnDeserialize(decode);
+	decode.Clear();
 }

@@ -31,7 +31,7 @@
 #include "RobotDispatcherMessage.h"
 
 #define SERVER_ADDRESS	"127.0.0.1"
-#define SERVER_PORT		12322
+#define SERVER_PORT		13000
 #define SLEEP_TIME		1000
 
 class ClientNetwork

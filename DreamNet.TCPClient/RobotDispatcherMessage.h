@@ -25,6 +25,7 @@
 */
 
 #include "NetworkDispatcherData.h"
+#include <stdio.h>
 
 class RobotDispatcherMessage : public NetworkDispatcherData
 {

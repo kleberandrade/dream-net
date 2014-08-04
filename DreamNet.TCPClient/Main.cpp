@@ -135,7 +135,7 @@ int __cdecl main(int argc, char **argv){
 		BufferDecode
 		BufferEncode
 		Encoding
-	
+
 	TCPClient client = TCPClient("127.0.0.1", 13000, 0, 1);
 	client.InitializeSockets();
 	client.Open();
@@ -178,8 +178,8 @@ int __cdecl main(int argc, char **argv){
 	client.Close();
 
 	printf("Client disconnect...\n");
-	
 */
+
 
 
 	ClientNetwork client = ClientNetwork();
@@ -187,7 +187,7 @@ int __cdecl main(int argc, char **argv){
 	client.SetRequest(new GameRequestMessage);
 	client.Open();
 
-	int cont = 0;
+	int cont = 2;
 	clock_t start,
 		stop;
 
@@ -201,35 +201,35 @@ int __cdecl main(int argc, char **argv){
 
 		// Envia e recebe dados pela rede
 		client.Send();
+		
 		client.Receive();
-
 		// Recebe os dados nas variáveis
 		double position = ((GameRequestMessage*)client.GetRequestData())->GetPosition();
 		double stiffness = ((GameRequestMessage*)client.GetRequestData())->GetStiffness();
 		double velocity = ((GameRequestMessage*)client.GetRequestData())->GetVelocity();
 		double acceleration = ((GameRequestMessage*)client.GetRequestData())->GetAcceleration();
 		int control = ((GameRequestMessage*)client.GetRequestData())->GetControl();
-
+		
 		stop = clock();
 
-		//Exibe as informações na tela
+		//Exibe as informações enviadas e recebidas
 		system("CLS");
-		printf("ROBOT #######################\n");
+		printf("ROBOT #######################\n\n");
 		printf("Status: %d\n", cont);
 		printf("Position: %Lf\n", cont * 10.0);
-		
+
 		printf("\nGAME ########################\n");
 		printf("Position: %Lf\n", position);
 		printf("Stiffness: %Lf\n", stiffness);
 		printf("Velocity: %Lf\n", velocity);
 		printf("Acceleration: %Lf\n", acceleration); 
 		printf("Control: %d\n", control);
-
-
-		printf("Tempo %.3f (ms)\n", ((double)(stop - start) / CLOCKS_PER_SEC));
+		
+		printf("\nTempo %.3f (ms)\n", ((double)(stop - start) / CLOCKS_PER_SEC));
 
 		// Atualiza o contador
 		cont++;
+		
 	}
 
 	client.Close();

@@ -37,6 +37,7 @@ public:
 
 	TCPClient();
 	TCPClient(const char *address, int port, u_long nonBlock = false, char nagle = 1);
+	
 	~TCPClient(void);
 	void Close(void);
 	void ShutdownSocket(void);

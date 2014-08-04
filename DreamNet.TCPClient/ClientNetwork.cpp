@@ -25,7 +25,7 @@
 #include "ClientNetwork.h"
 
 ClientNetwork::ClientNetwork()
-	: m_tcpClient(SERVER_ADDRESS, SERVER_PORT)
+	: m_tcpClient(SERVER_ADDRESS, SERVER_PORT, 0, 1)
 {
 
 }
@@ -40,24 +40,8 @@ ClientNetwork::~ClientNetwork(void)
 
 bool ClientNetwork::Open(void)
 {
-	if (m_tcpClient.IsOpen())
-	{
-		printf("Already open connection.\r\n");
-		return true;
-	}
-
-	if (!m_tcpClient.InitializeSockets())
-	{
-		printf("failed to initialize sockets.\r\n");
-		return false;
-	}
-
-	if (!m_tcpClient.Open())
-	{
-		printf("failed to open connection.\r\n");
-		return false;
-	}
-
+	m_tcpClient.InitializeSockets();
+	m_tcpClient.Open();
 	return true;
 }
 
@@ -83,5 +67,6 @@ void ClientNetwork::Receive(void)
 {
 	char buffer[BUFFER_SIZE];
 	m_tcpClient.Receiver(buffer, BUFFER_SIZE);
+	m_Decode.SetBuffer(buffer);
 	m_requestData->Deserialize(m_Decode);
 }

@@ -11,11 +11,12 @@ namespace DreamNet.TCPServer
 {
     class Program
     {
-        
-
         public static void Main()
         {
-            TestTCPServer3();
+            TCPServer server = new TCPServer("127.0.0.1", 13000);
+            server.Open();
+            server.ListenForClients();
+            server.HandleClientComm();
         }
 
         #region STATIC METHODS

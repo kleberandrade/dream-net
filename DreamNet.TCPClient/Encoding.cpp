@@ -1,30 +1,18 @@
 /**
-*	The MIT License (MIT)
+* @file  Encoding.cpp
+* @brief Implementação do wrapper para as codificações e decodificações de rede
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011-2014, EESC-USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "Encoding.h"
 
-
+/**
+* @brief Método estático para converter int do host para rede
+* @param iValue - valor int a ser convertido
+* @return valor int convertido
+*/
 int Encoding::HostToNetworkInt(int iValue)
 {
 #if __BIG_ENDIAN
@@ -34,6 +22,11 @@ int Encoding::HostToNetworkInt(int iValue)
 #endif
 }
 
+/**
+* @brief Método estático para converter int da rede para o host
+* @param iValue - valor int convertido
+* @return valor int normal
+*/
 int Encoding::NetworkToHostInt(int iValue)
 {
 #if __BIG_ENDIAN
@@ -43,6 +36,11 @@ int Encoding::NetworkToHostInt(int iValue)
 #endif
 }
 
+/**
+* @brief Método estático para converter float do host para rede
+* @param fValue - valor float a ser convertido
+* @return valor float convertido
+*/
 float Encoding::HostToNetworkFloat(float fValue)
 {
 #if __BIG_ENDIAN
@@ -71,6 +69,11 @@ float Encoding::HostToNetworkFloat(float fValue)
 #endif
 }
 
+/**
+* @brief Método estático para converter float da rede para o host
+* @param fValue - valor float convertido
+* @return valor float normal
+*/
 float Encoding::NetworkToHostFloat(float fValue)
 {
 #if __BIG_ENDIAN
@@ -99,6 +102,11 @@ float Encoding::NetworkToHostFloat(float fValue)
 #endif
 }
 
+/**
+* @brief Método estático para converter double do host para rede
+* @param dValue - valor double a ser convertido
+* @return valor double convertido
+*/
 double Encoding::HostToNetworkDouble(double dValue)
 {
 #if __BIG_ENDIAN
@@ -127,6 +135,11 @@ double Encoding::HostToNetworkDouble(double dValue)
 #endif
 }
 
+/**
+* @brief Método estático para converter double da rede para o host
+* @param dValue - valor double convertido
+* @return valor double normal
+*/
 double Encoding::NetworkToHostDouble(double dValue)
 {
 #if __BIG_ENDIAN

@@ -1,6 +1,6 @@
 /**
-* @file  BufferDecode.h
-* @brief Classe auxiliar para decodificar um buffer binario
+* @file  BufferDecode.cpp
+* @brief Implementação da classe auxiliar para decodificar um buffer binario
 *
 * @copyright DreanNet 2011-2014, EESC-USP.
 *

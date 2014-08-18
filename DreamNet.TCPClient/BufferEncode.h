@@ -1,45 +1,59 @@
 #pragma once
 
 /**
-*	The MIT License (MIT)
+* @file  BufferEncode.h
+* @brief Classe auxiliar para codificar um buffer binario
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011 - 2014, EESC - USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "Buffer.h"
 #include "Encoding.h"
 
+/*******************************************************************
+*   ESTRUTURA DA CLASSE
+*******************************************************************/
+
 class BufferEncode : public Buffer
 {
 public:
+
+	/**
+	* Construtor da classe
+	*/
 	BufferEncode(void);
+
+	/**
+	* Construtor da classe
+	* @param buffer - Conteúdo para o buffer
+	*/
 	BufferEncode(char buffer[]);
 
-	void EncodeDouble(double dValue);
-	void EncodeFloat(float fValue);
-	void EncodeInt(int iValue);
+	/**
+	* Seta o próximo double
+	* @param dValue - double que será convertido para binário e alocado no buffer
+	*/
+	void ToDouble(double dValue);
 
+	/**
+	* Seta o próximo float
+	* @param fValue - float que será convertido para binário e alocado no buffer
+	*/
+	void ToFloat(float fValue);
+
+	/**
+	* Seta o próximo int
+	* @param iValue - int que será convertido para binário e alocado no buffer
+	*/
+	void ToInt(int iValue);
+
+	/**
+	* Limpa o buffer e zera m_iPosition
+	*/
 	void Clear(void);
 
 private:
-	int m_iPosition;
+	int m_iPosition;			/**< m_iPosition - posição (indice) do buffer */
 };
 

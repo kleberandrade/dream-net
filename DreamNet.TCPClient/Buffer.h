@@ -1,52 +1,66 @@
 #pragma once
 
 /**
-*	The MIT License (MIT)
+* @file  Buffer.h
+* @brief Classe que representa um buffer, criando métodos para pegar e configurar um buffer
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
-*
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include <string.h>
 
+/*******************************************************************
+*   DEFINES
+*******************************************************************/
 #define BUFFER_SIZE		64
 
+/*******************************************************************
+*   ESTRUTURA DA CLASSE
+*******************************************************************/
 class Buffer
 {
 public:
+	/**
+	* Construtor da classe
+	*/
 	Buffer(void);
-	Buffer(char buffer[]);
-	~Buffer(void);
 
+	/**
+	* Construtor da classe
+	* @param buffer - Conteúdo para o buffer
+	*/
+	Buffer(char buffer[]);
+
+	/**
+	* Limpa o buffer
+	*/
 	void Clear(void);
 
+	/**
+	* Pega o buffer atual
+	* @return m_strBuffer - retorna um buffer constante
+	*/
 	inline const char *GetBuffer(void)
 	{
 		return m_strBuffer;
 	}
 
+	/**
+	* Modifica o buffer atual
+	*/
 	inline void SetBuffer(char buffer[])
 	{
 		memcpy(m_strBuffer, buffer, BUFFER_SIZE);
 	}
 
+	/**
+	* Pega o tamanho do buffer atual
+	* @return m_iBufferSuze - tamanho do buffer atual
+	*/
+	inline int GetSize(void)
+	{
+		return BUFFER_SIZE;
+	}
+
 protected:
-	char m_strBuffer[BUFFER_SIZE];
+	char m_strBuffer[BUFFER_SIZE];			/**< m_strBuffer - representar um buffer de tamanho estático */
 };

@@ -1,68 +1,79 @@
 #pragma once
 
 /**
-*	The MIT License (MIT)
+* @file  GameRequestMessage.h
+* @brief Classe que mantem as informações recebidas do servidor (Game)
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011-2014, EESC-USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "NetworkRequestData.h"
 
-
+/**
+* @brief Classe que mantem as informações recebidas do servidor (Game)
+*/
 class GameRequestMessage : public NetworkRequestData
 {
 public:
+
+	/**
+	* Pega o setpoint de posição do controle de impedância
+	* @return m_dPosition
+	*/
 	inline double GetPosition() const
 	{
 		return m_dPosition;
 	}
 
+	/**
+	* Pega a rigidez do controle de impedância
+	* @return m_dStiffness
+	*/
 	inline double GetStiffness() const
 	{
 		return m_dStiffness;
 	}
 
+	/**
+	* Pega o setpoint de velocidade do controle de impedância
+	* @return m_dVelocity
+	*/
 	inline double GetVelocity() const
 	{
 		return m_dVelocity;
 	}
 
+	/**
+	* Pega o setpoint de aceleração do controle de impedância
+	* @return m_dAcceleration 
+	*/
 	inline double GetAcceleration() const
 	{
 		return m_dAcceleration;
 	}
 
+	/**
+	* Pega o controle enviado pelo jogo
+	* @return m_iControl
+	*/
 	inline int GetControl() const
 	{
 		return m_iControl;
 	}
 
 protected:
+	/**
+	* Método de deserialização da mensagen em binário
+	* @param decode - buffer utilizado para decodificar a mensagem em binário
+	*/
 	void OnDeserialize(BufferDecode &decode);
 
 private:
-	double m_dPosition;
-	double m_dStiffness;
-	double m_dVelocity;
-	double m_dAcceleration;
-	int m_iControl;
+	double m_dPosition;				/**< m_dPosition - setpoint de posição para o controle de impedância */
+	double m_dStiffness;			/**< m_dStiffness - rigidez do controle de impedância */
+	double m_dVelocity;				/**< m_dVelocity - setpoint de velocidade para o controle de impedância */
+	double m_dAcceleration;			/**< m_dAcceleration - setpoint de aceleração para o controle de impedância */
+	int m_iControl;					/**< m_iControl - controle enviado do jogo para o robô */
 };
 

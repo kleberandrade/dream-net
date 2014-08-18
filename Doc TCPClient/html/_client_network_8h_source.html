@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Dream Net: CÃ³digo-Fonte de DreamNet.TCPClient/ClientNetwork.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Dream Net
+   </div>
+   <div id="projectbrief">Cliente multiplataforma para interaÃ§ao entre robÃ´s e jogos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>PÃ¡gina&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&#160;Membros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>FunÃ§Ãµes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>VariÃ¡veis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>DefiniÃ§Ãµes e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d38c55e241fe68e5e3794e16fa0c873.html">DreamNet.TCPClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ClientNetwork.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_client_network_8h.html">VÃ¡ para a documentaÃ§Ã£o deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_t_c_p_client_8h.html">TCPClient.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_network_dispatcher_data_8h.html">NetworkDispatcherData.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_network_request_data_8h.html">NetworkRequestData.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_request_message_8h.html">GameRequestMessage.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_robot_dispatcher_message_8h.html">RobotDispatcherMessage.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*   DEFINES</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// #define __BIG_ENDIAN</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="_client_network_8h.html#aeccf3e279c16687d91cd28d0463cbde6">   25</a></span>&#160;<span class="preprocessor">#define __LITTLE_ENDIAN</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef _WCE_SECTION</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#pragma comment(lib,&quot;ws2.lib&quot;)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#pragma comment (lib, &quot;Ws2_32.lib&quot;)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">*   ESTRUTURA DA CLASSE</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_client_network.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_client_network.html">ClientNetwork</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_client_network.html#a7287de2a4a8eb4f9b4798cd6a502689b">ClientNetwork</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_client_network.html#a7287de2a4a8eb4f9b4798cd6a502689b">ClientNetwork</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *host, <span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_client_network.html#a5a9041029d317343e844a54e2cc1edd4">~ClientNetwork</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_client_network.html#aa7dc783cee3ae53d7c6a7d2941e80cd4">Open</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_client_network.html#a121563afb6605fde09287e0bba0b7cae">IsOpen</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_client_network.html#ad1f574ed3e56b837cc2d222fff8c014e">Close</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_client_network.html#a89aa7ec1f878ab8acf94cd09417cac40">Send</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_client_network.html#a6f95386a9872e30dc3192adf20a10e20">Receive</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_client_network.html#aa0d88a3e320bcb7a0b0981fc3ac417da">   92</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_network_dispatcher_data.html">NetworkDispatcherData</a> *<a class="code" href="class_client_network.html#aa0d88a3e320bcb7a0b0981fc3ac417da">GetDispatcherData</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> m_dispatcherData;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_client_network.html#aa8d6979135f720bf447a8989f2a68609">  101</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_network_request_data.html">NetworkRequestData</a> *<a class="code" href="class_client_network.html#aa8d6979135f720bf447a8989f2a68609">GetRequestData</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> m_requestData;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_client_network.html#a2427604a8aedfc3fc99f2cff0ce9f2bd">  110</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_client_network.html#a2427604a8aedfc3fc99f2cff0ce9f2bd">SetDispatcher</a>(<a class="code" href="class_network_dispatcher_data.html">NetworkDispatcherData</a> *dispatcherData)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        m_dispatcherData = dispatcherData;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_client_network.html#a45b37bedd12bba1e05e49ed6e442bba2">  119</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_client_network.html#a45b37bedd12bba1e05e49ed6e442bba2">SetRequest</a>(<a class="code" href="class_network_request_data.html">NetworkRequestData</a> *requestData)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        m_requestData = requestData;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="class_t_c_p_client.html">TCPClient</a> m_tcpClient;                      </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="class_buffer_decode.html">BufferDecode</a> m_Decode;                      </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="class_buffer_encode.html">BufferEncode</a> m_Encode;                      </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="class_network_request_data.html">NetworkRequestData</a> *m_requestData;          </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="class_network_dispatcher_data.html">NetworkDispatcherData</a> *m_dispatcherData;    </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;};  </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="ttc" id="class_client_network_html_aa7dc783cee3ae53d7c6a7d2941e80cd4"><div class="ttname"><a href="class_client_network.html#aa7dc783cee3ae53d7c6a7d2941e80cd4">ClientNetwork::Open</a></div><div class="ttdeci">bool Open(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:50</div></div>
+<div class="ttc" id="class_client_network_html_a7287de2a4a8eb4f9b4798cd6a502689b"><div class="ttname"><a href="class_client_network.html#a7287de2a4a8eb4f9b4798cd6a502689b">ClientNetwork::ClientNetwork</a></div><div class="ttdeci">ClientNetwork()</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:18</div></div>
+<div class="ttc" id="class_client_network_html_a45b37bedd12bba1e05e49ed6e442bba2"><div class="ttname"><a href="class_client_network.html#a45b37bedd12bba1e05e49ed6e442bba2">ClientNetwork::SetRequest</a></div><div class="ttdeci">void SetRequest(NetworkRequestData *requestData)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.h:119</div></div>
+<div class="ttc" id="class_network_request_data_html"><div class="ttname"><a href="class_network_request_data.html">NetworkRequestData</a></div><div class="ttdoc">Classe abstrata que deserializa o buffer da rede. </div><div class="ttdef"><b>Definition:</b> NetworkRequestData.h:20</div></div>
+<div class="ttc" id="class_client_network_html_a2427604a8aedfc3fc99f2cff0ce9f2bd"><div class="ttname"><a href="class_client_network.html#a2427604a8aedfc3fc99f2cff0ce9f2bd">ClientNetwork::SetDispatcher</a></div><div class="ttdeci">void SetDispatcher(NetworkDispatcherData *dispatcherData)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.h:110</div></div>
+<div class="ttc" id="_game_request_message_8h_html"><div class="ttname"><a href="_game_request_message_8h.html">GameRequestMessage.h</a></div><div class="ttdoc">Classe que mantem as informações recebidas do servidor (Game) </div></div>
+<div class="ttc" id="_t_c_p_client_8h_html"><div class="ttname"><a href="_t_c_p_client_8h.html">TCPClient.h</a></div><div class="ttdoc">Classe que encapsula um cliente TCP/IP. </div></div>
+<div class="ttc" id="class_client_network_html_aa0d88a3e320bcb7a0b0981fc3ac417da"><div class="ttname"><a href="class_client_network.html#aa0d88a3e320bcb7a0b0981fc3ac417da">ClientNetwork::GetDispatcherData</a></div><div class="ttdeci">NetworkDispatcherData * GetDispatcherData(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.h:92</div></div>
+<div class="ttc" id="class_client_network_html_a121563afb6605fde09287e0bba0b7cae"><div class="ttname"><a href="class_client_network.html#a121563afb6605fde09287e0bba0b7cae">ClientNetwork::IsOpen</a></div><div class="ttdeci">bool IsOpen(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:61</div></div>
+<div class="ttc" id="class_client_network_html"><div class="ttname"><a href="class_client_network.html">ClientNetwork</a></div><div class="ttdoc">Cliente TCP para conectar com um servidor e receber informações do jogo. </div><div class="ttdef"><b>Definition:</b> ClientNetwork.h:40</div></div>
+<div class="ttc" id="class_buffer_decode_html"><div class="ttname"><a href="class_buffer_decode.html">BufferDecode</a></div><div class="ttdoc">Classe auxiliar para decodificar um buffer binario. </div><div class="ttdef"><b>Definition:</b> BufferDecode.h:21</div></div>
+<div class="ttc" id="class_client_network_html_a5a9041029d317343e844a54e2cc1edd4"><div class="ttname"><a href="class_client_network.html#a5a9041029d317343e844a54e2cc1edd4">ClientNetwork::~ClientNetwork</a></div><div class="ttdeci">~ClientNetwork(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:38</div></div>
+<div class="ttc" id="_robot_dispatcher_message_8h_html"><div class="ttname"><a href="_robot_dispatcher_message_8h.html">RobotDispatcherMessage.h</a></div><div class="ttdoc">Classe que mantem as informações enviadas para o servidor. </div></div>
+<div class="ttc" id="class_client_network_html_a89aa7ec1f878ab8acf94cd09417cac40"><div class="ttname"><a href="class_client_network.html#a89aa7ec1f878ab8acf94cd09417cac40">ClientNetwork::Send</a></div><div class="ttdeci">void Send(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:77</div></div>
+<div class="ttc" id="class_client_network_html_a6f95386a9872e30dc3192adf20a10e20"><div class="ttname"><a href="class_client_network.html#a6f95386a9872e30dc3192adf20a10e20">ClientNetwork::Receive</a></div><div class="ttdeci">void Receive(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:88</div></div>
+<div class="ttc" id="_network_request_data_8h_html"><div class="ttname"><a href="_network_request_data_8h.html">NetworkRequestData.h</a></div><div class="ttdoc">Classe abstrata que deserializa o buffer da rede. </div></div>
+<div class="ttc" id="class_buffer_encode_html"><div class="ttname"><a href="class_buffer_encode.html">BufferEncode</a></div><div class="ttdoc">Classe auxiliar para codificar um buffer binario. </div><div class="ttdef"><b>Definition:</b> BufferEncode.h:20</div></div>
+<div class="ttc" id="class_client_network_html_aa8d6979135f720bf447a8989f2a68609"><div class="ttname"><a href="class_client_network.html#aa8d6979135f720bf447a8989f2a68609">ClientNetwork::GetRequestData</a></div><div class="ttdeci">NetworkRequestData * GetRequestData(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.h:101</div></div>
+<div class="ttc" id="class_t_c_p_client_html"><div class="ttname"><a href="class_t_c_p_client.html">TCPClient</a></div><div class="ttdoc">Classe que encapsula uma conexão TCP/IP. </div><div class="ttdef"><b>Definition:</b> TCPClient.h:32</div></div>
+<div class="ttc" id="_network_dispatcher_data_8h_html"><div class="ttname"><a href="_network_dispatcher_data_8h.html">NetworkDispatcherData.h</a></div><div class="ttdoc">Classe abstrata que serializa o buffer da rede. </div></div>
+<div class="ttc" id="class_network_dispatcher_data_html"><div class="ttname"><a href="class_network_dispatcher_data.html">NetworkDispatcherData</a></div><div class="ttdoc">Classe abstrata que serializa o buffer para rede. </div><div class="ttdef"><b>Definition:</b> NetworkDispatcherData.h:20</div></div>
+<div class="ttc" id="class_client_network_html_ad1f574ed3e56b837cc2d222fff8c014e"><div class="ttname"><a href="class_client_network.html#ad1f574ed3e56b837cc2d222fff8c014e">ClientNetwork::Close</a></div><div class="ttdeci">void Close(void)</div><div class="ttdef"><b>Definition:</b> ClientNetwork.cpp:69</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 18 de Agosto de 2014 12:37:30 para Dream Net por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.7
+</small></address>
+</body>
+</html>

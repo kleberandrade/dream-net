@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Dream Net: Código-Fonte de DreamNet.TCPClient/GameRequestMessage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Dream Net
+   </div>
+   <div id="projectbrief">Cliente multiplataforma para interaçao entre robôs e jogos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&#160;Membros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definições e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d38c55e241fe68e5e3794e16fa0c873.html">DreamNet.TCPClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GameRequestMessage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_game_request_message_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_network_request_data_8h.html">NetworkRequestData.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*   ESTRUTURA DA CLASSE</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_game_request_message.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_game_request_message.html">GameRequestMessage</a> : <span class="keyword">public</span> <a class="code" href="class_network_request_data.html">NetworkRequestData</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_game_request_message.html#a99905c55b8161a5ac7731e5fb468df83">   28</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_game_request_message.html#a99905c55b8161a5ac7731e5fb468df83">GetPosition</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> m_dPosition;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_game_request_message.html#ad8de1c150b6d1fe283d15ee774f93951">   37</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_game_request_message.html#ad8de1c150b6d1fe283d15ee774f93951">GetStiffness</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> m_dStiffness;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_game_request_message.html#a93d5d7e38cd1027dca8d76ce5298d0e1">   46</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_game_request_message.html#a93d5d7e38cd1027dca8d76ce5298d0e1">GetVelocity</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> m_dVelocity;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_game_request_message.html#acf1189b70d57114d0db42965b22f4ff4">   55</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_game_request_message.html#acf1189b70d57114d0db42965b22f4ff4">GetAcceleration</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> m_dAcceleration;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_game_request_message.html#a5ff9693fe4c15428397c62a5634b9779">   64</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="class_game_request_message.html#a5ff9693fe4c15428397c62a5634b9779">GetControl</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> m_iControl;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_request_message.html#aafca6d3dbdc32b91c838375dc9ad285b">OnDeserialize</a>(<a class="code" href="class_buffer_decode.html">BufferDecode</a> &amp;decode);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> m_dPosition;             </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">double</span> m_dStiffness;            </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">double</span> m_dVelocity;             </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">double</span> m_dAcceleration;         </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> m_iControl;                 </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="ttc" id="class_network_request_data_html"><div class="ttname"><a href="class_network_request_data.html">NetworkRequestData</a></div><div class="ttdoc">Classe abstrata que deserializa o buffer da rede. </div><div class="ttdef"><b>Definition:</b> NetworkRequestData.h:20</div></div>
+<div class="ttc" id="class_game_request_message_html_a5ff9693fe4c15428397c62a5634b9779"><div class="ttname"><a href="class_game_request_message.html#a5ff9693fe4c15428397c62a5634b9779">GameRequestMessage::GetControl</a></div><div class="ttdeci">int GetControl() const </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:64</div></div>
+<div class="ttc" id="class_game_request_message_html_a93d5d7e38cd1027dca8d76ce5298d0e1"><div class="ttname"><a href="class_game_request_message.html#a93d5d7e38cd1027dca8d76ce5298d0e1">GameRequestMessage::GetVelocity</a></div><div class="ttdeci">double GetVelocity() const </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:46</div></div>
+<div class="ttc" id="class_buffer_decode_html"><div class="ttname"><a href="class_buffer_decode.html">BufferDecode</a></div><div class="ttdoc">Classe auxiliar para decodificar um buffer binario. </div><div class="ttdef"><b>Definition:</b> BufferDecode.h:21</div></div>
+<div class="ttc" id="class_game_request_message_html_aafca6d3dbdc32b91c838375dc9ad285b"><div class="ttname"><a href="class_game_request_message.html#aafca6d3dbdc32b91c838375dc9ad285b">GameRequestMessage::OnDeserialize</a></div><div class="ttdeci">void OnDeserialize(BufferDecode &amp;decode)</div><div class="ttdef"><b>Definition:</b> GameRequestMessage.cpp:19</div></div>
+<div class="ttc" id="class_game_request_message_html_a99905c55b8161a5ac7731e5fb468df83"><div class="ttname"><a href="class_game_request_message.html#a99905c55b8161a5ac7731e5fb468df83">GameRequestMessage::GetPosition</a></div><div class="ttdeci">double GetPosition() const </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:28</div></div>
+<div class="ttc" id="class_game_request_message_html_acf1189b70d57114d0db42965b22f4ff4"><div class="ttname"><a href="class_game_request_message.html#acf1189b70d57114d0db42965b22f4ff4">GameRequestMessage::GetAcceleration</a></div><div class="ttdeci">double GetAcceleration() const </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:55</div></div>
+<div class="ttc" id="_network_request_data_8h_html"><div class="ttname"><a href="_network_request_data_8h.html">NetworkRequestData.h</a></div><div class="ttdoc">Classe abstrata que deserializa o buffer da rede. </div></div>
+<div class="ttc" id="class_game_request_message_html"><div class="ttname"><a href="class_game_request_message.html">GameRequestMessage</a></div><div class="ttdoc">Classe que mantem as informa��es recebidas do servidor (Game) </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:20</div></div>
+<div class="ttc" id="class_game_request_message_html_ad8de1c150b6d1fe283d15ee774f93951"><div class="ttname"><a href="class_game_request_message.html#ad8de1c150b6d1fe283d15ee774f93951">GameRequestMessage::GetStiffness</a></div><div class="ttdeci">double GetStiffness() const </div><div class="ttdef"><b>Definition:</b> GameRequestMessage.h:37</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 18 de Agosto de 2014 12:37:31 para Dream Net por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.7
+</small></address>
+</body>
+</html>

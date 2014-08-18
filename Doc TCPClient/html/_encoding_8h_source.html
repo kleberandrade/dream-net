@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Dream Net: C√≥digo-Fonte de DreamNet.TCPClient/Encoding.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Dream Net
+   </div>
+   <div id="projectbrief">Cliente multiplataforma para intera√ßao entre rob√¥s e jogos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>P√°gina&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&#160;Membros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fun√ß√µes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Vari√°veis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defini√ß√µes e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d38c55e241fe68e5e3794e16fa0c873.html">DreamNet.TCPClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Encoding.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_encoding_8h.html">V√° para a documenta√ß√£o deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*   ESTRUTURA DA CLASSE</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_encoding.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_encoding.html">Encoding</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_encoding.html#a577f3c03b73b2b2ef2b70fa45912fc32">HostToNetworkInt</a>(<span class="keywordtype">int</span> iValue);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_encoding.html#aee6f1370cfce108369ce155717a239a4">NetworkToHostInt</a>(<span class="keywordtype">int</span> iValue);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code" href="class_encoding.html#ae359a1962538324ec8d4cfe250f6f62f">HostToNetworkFloat</a>(<span class="keywordtype">float</span> fValue);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code" href="class_encoding.html#a72ff16c1a8e54198fdb7f9936b8e3875">NetworkToHostFloat</a>(<span class="keywordtype">float</span> fValue);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="class_encoding.html#aed839222ff2b55b2ee4043b0df8b376d">HostToNetworkDouble</a>(<span class="keywordtype">double</span> dValue);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="class_encoding.html#a6bb3ced815d11eeaaae52ca81be63382">NetworkToHostDouble</a>(<span class="keywordtype">double</span> dValue);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="ttc" id="class_encoding_html"><div class="ttname"><a href="class_encoding.html">Encoding</a></div><div class="ttdoc">Wrapper para as codificaÁıes e decodificaÁıes de rede. </div><div class="ttdef"><b>Definition:</b> Encoding.h:20</div></div>
+<div class="ttc" id="class_encoding_html_a577f3c03b73b2b2ef2b70fa45912fc32"><div class="ttname"><a href="class_encoding.html#a577f3c03b73b2b2ef2b70fa45912fc32">Encoding::HostToNetworkInt</a></div><div class="ttdeci">static int HostToNetworkInt(int iValue)</div><div class="ttdoc">MÈtodo est·tico para converter int do host para rede. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:20</div></div>
+<div class="ttc" id="class_encoding_html_a6bb3ced815d11eeaaae52ca81be63382"><div class="ttname"><a href="class_encoding.html#a6bb3ced815d11eeaaae52ca81be63382">Encoding::NetworkToHostDouble</a></div><div class="ttdeci">static double NetworkToHostDouble(double dValue)</div><div class="ttdoc">MÈtodo est·tico para converter double da rede para o host. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:147</div></div>
+<div class="ttc" id="class_encoding_html_a72ff16c1a8e54198fdb7f9936b8e3875"><div class="ttname"><a href="class_encoding.html#a72ff16c1a8e54198fdb7f9936b8e3875">Encoding::NetworkToHostFloat</a></div><div class="ttdeci">static float NetworkToHostFloat(float fValue)</div><div class="ttdoc">MÈtodo est·tico para converter float da rede para o host. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:81</div></div>
+<div class="ttc" id="class_encoding_html_ae359a1962538324ec8d4cfe250f6f62f"><div class="ttname"><a href="class_encoding.html#ae359a1962538324ec8d4cfe250f6f62f">Encoding::HostToNetworkFloat</a></div><div class="ttdeci">static float HostToNetworkFloat(float fValue)</div><div class="ttdoc">MÈtodo est·tico para converter float do host para rede. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:48</div></div>
+<div class="ttc" id="class_encoding_html_aed839222ff2b55b2ee4043b0df8b376d"><div class="ttname"><a href="class_encoding.html#aed839222ff2b55b2ee4043b0df8b376d">Encoding::HostToNetworkDouble</a></div><div class="ttdeci">static double HostToNetworkDouble(double dValue)</div><div class="ttdoc">MÈtodo est·tico para converter double do host para rede. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:114</div></div>
+<div class="ttc" id="class_encoding_html_aee6f1370cfce108369ce155717a239a4"><div class="ttname"><a href="class_encoding.html#aee6f1370cfce108369ce155717a239a4">Encoding::NetworkToHostInt</a></div><div class="ttdeci">static int NetworkToHostInt(int iValue)</div><div class="ttdoc">MÈtodo est·tico para converter int da rede para o host. </div><div class="ttdef"><b>Definition:</b> Encoding.cpp:34</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 18 de Agosto de 2014 12:37:31 para Dream Net por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.7
+</small></address>
+</body>
+</html>

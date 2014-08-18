@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Dream Net: Código-Fonte de DreamNet.TCPClient/BufferEncode.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Dream Net
+   </div>
+   <div id="projectbrief">Cliente multiplataforma para interaçao entre robôs e jogos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&#160;Membros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definições e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d38c55e241fe68e5e3794e16fa0c873.html">DreamNet.TCPClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BufferEncode.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_buffer_encode_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_buffer_8h.html">Buffer.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_encoding_8h.html">Encoding.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*   ESTRUTURA DA CLASSE</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_buffer_encode.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_buffer_encode.html">BufferEncode</a> : <span class="keyword">public</span> <a class="code" href="class_buffer.html">Buffer</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_buffer_encode.html#a5fdd659d132434fa45da656247d16d79">BufferEncode</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_buffer_encode.html#a5fdd659d132434fa45da656247d16d79">BufferEncode</a>(<span class="keywordtype">char</span> buffer[]);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_buffer_encode.html#adca191a76a87a250d0eca6518db0c96e">ToDouble</a>(<span class="keywordtype">double</span> dValue);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_buffer_encode.html#a4b96de5d178148d72f4a65b7fd83e5b8">ToFloat</a>(<span class="keywordtype">float</span> fValue);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_buffer_encode.html#adb9627b3af5f13fc06feae12d1501904">ToInt</a>(<span class="keywordtype">int</span> iValue);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_buffer_encode.html#a2bb14313192a14cd8fd1986d9377829e">Clear</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> m_iPosition;            </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="ttc" id="_encoding_8h_html"><div class="ttname"><a href="_encoding_8h.html">Encoding.h</a></div><div class="ttdoc">Wrapper para as codifica��es e decodifica��es de rede. </div></div>
+<div class="ttc" id="class_buffer_encode_html_adb9627b3af5f13fc06feae12d1501904"><div class="ttname"><a href="class_buffer_encode.html#adb9627b3af5f13fc06feae12d1501904">BufferEncode::ToInt</a></div><div class="ttdeci">void ToInt(int iValue)</div><div class="ttdef"><b>Definition:</b> BufferEncode.cpp:63</div></div>
+<div class="ttc" id="class_buffer_encode_html_adca191a76a87a250d0eca6518db0c96e"><div class="ttname"><a href="class_buffer_encode.html#adca191a76a87a250d0eca6518db0c96e">BufferEncode::ToDouble</a></div><div class="ttdeci">void ToDouble(double dValue)</div><div class="ttdef"><b>Definition:</b> BufferEncode.cpp:40</div></div>
+<div class="ttc" id="_buffer_8h_html"><div class="ttname"><a href="_buffer_8h.html">Buffer.h</a></div><div class="ttdoc">Classe que representa um buffer, criando m�todos para pegar e configurar um buffer. </div></div>
+<div class="ttc" id="class_buffer_encode_html_a2bb14313192a14cd8fd1986d9377829e"><div class="ttname"><a href="class_buffer_encode.html#a2bb14313192a14cd8fd1986d9377829e">BufferEncode::Clear</a></div><div class="ttdeci">void Clear(void)</div><div class="ttdef"><b>Definition:</b> BufferEncode.cpp:73</div></div>
+<div class="ttc" id="class_buffer_encode_html"><div class="ttname"><a href="class_buffer_encode.html">BufferEncode</a></div><div class="ttdoc">Classe auxiliar para codificar um buffer binario. </div><div class="ttdef"><b>Definition:</b> BufferEncode.h:20</div></div>
+<div class="ttc" id="class_buffer_encode_html_a4b96de5d178148d72f4a65b7fd83e5b8"><div class="ttname"><a href="class_buffer_encode.html#a4b96de5d178148d72f4a65b7fd83e5b8">BufferEncode::ToFloat</a></div><div class="ttdeci">void ToFloat(float fValue)</div><div class="ttdef"><b>Definition:</b> BufferEncode.cpp:52</div></div>
+<div class="ttc" id="class_buffer_encode_html_a5fdd659d132434fa45da656247d16d79"><div class="ttname"><a href="class_buffer_encode.html#a5fdd659d132434fa45da656247d16d79">BufferEncode::BufferEncode</a></div><div class="ttdeci">BufferEncode(void)</div><div class="ttdef"><b>Definition:</b> BufferEncode.cpp:18</div></div>
+<div class="ttc" id="class_buffer_html"><div class="ttname"><a href="class_buffer.html">Buffer</a></div><div class="ttdoc">Classe que representa um buffer, criando m�todos para pegar e configurar um buffer. </div><div class="ttdef"><b>Definition:</b> Buffer.h:27</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 18 de Agosto de 2014 12:37:30 para Dream Net por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.7
+</small></address>
+</body>
+</html>

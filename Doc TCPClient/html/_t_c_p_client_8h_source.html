@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Dream Net: Código-Fonte de DreamNet.TCPClient/TCPClient.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Dream Net
+   </div>
+   <div id="projectbrief">Cliente multiplataforma para interaçao entre robôs e jogos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&#160;Membros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definições e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d38c55e241fe68e5e3794e16fa0c873.html">DreamNet.TCPClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">TCPClient.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_t_c_p_client_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_network_services_8h.html">NetworkServices.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*   DEFINES</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_t_c_p_client_8h.html#aacebc74ef9a786231060d3a8d8b56d24">   20</a></span>&#160;<span class="preprocessor">#define LOCAL_HOST  &quot;127.0.0.1&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="_t_c_p_client_8h.html#a16b710f592bf8f7900666392adc444dc">   23</a></span>&#160;<span class="preprocessor">#define DEFAULT_PORT 13000</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*   ESTRUTURA DA CLASSE</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_t_c_p_client.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_t_c_p_client.html">TCPClient</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="class_t_c_p_client.html#a091bd16baee06d0c980062a442b2c1c4">TCPClient</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_t_c_p_client.html#a091bd16baee06d0c980062a442b2c1c4">TCPClient</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *address, <span class="keywordtype">int</span> port, <span class="keywordtype">char</span> nagle = 0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_t_c_p_client.html#a2a31d81f04bfb18988d68cdd0da007e3">~TCPClient</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_t_c_p_client.html#aae4b0a944ecafd51e6bd3b36ea0864b5">Close</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_t_c_p_client.html#a7019a1b6bb8af0e06c2463141c1b9003">ShutdownSocket</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_t_c_p_client.html#a1e7c69401ba0c2899707e41b6535c80f">InitializeSockets</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_t_c_p_client.html#a5a1e5624fe269433fb7f26908d4b8437">Open</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_t_c_p_client.html#a7d0890044e77de47351ab7fd0da64678">IsOpen</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_t_c_p_client.html#a36d3a680e8b95a7dff9a668f93b9e6f5">Send</a>(<span class="keywordtype">char</span> *message, <span class="keywordtype">int</span> messageSize);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_t_c_p_client.html#ac120af265bb042c0353fa799a6d56457">Receiver</a>(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">int</span> bufferSize);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    SOCKET m_Socket;            </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">int</span> m_iResult;              </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *m_sAddress;     </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> m_iPort;                </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">char</span> m_cNagle;              </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="ttc" id="class_t_c_p_client_html_ac120af265bb042c0353fa799a6d56457"><div class="ttname"><a href="class_t_c_p_client.html#ac120af265bb042c0353fa799a6d56457">TCPClient::Receiver</a></div><div class="ttdeci">int Receiver(char *buffer, int bufferSize)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:193</div></div>
+<div class="ttc" id="_network_services_8h_html"><div class="ttname"><a href="_network_services_8h.html">NetworkServices.h</a></div><div class="ttdoc">Wrapper para as fun��es de send e recv do SOCKET. </div></div>
+<div class="ttc" id="class_t_c_p_client_html_a2a31d81f04bfb18988d68cdd0da007e3"><div class="ttname"><a href="class_t_c_p_client.html#a2a31d81f04bfb18988d68cdd0da007e3">TCPClient::~TCPClient</a></div><div class="ttdeci">~TCPClient(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:43</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a5a1e5624fe269433fb7f26908d4b8437"><div class="ttname"><a href="class_t_c_p_client.html#a5a1e5624fe269433fb7f26908d4b8437">TCPClient::Open</a></div><div class="ttdeci">bool Open(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:126</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a1e7c69401ba0c2899707e41b6535c80f"><div class="ttname"><a href="class_t_c_p_client.html#a1e7c69401ba0c2899707e41b6535c80f">TCPClient::InitializeSockets</a></div><div class="ttdeci">bool InitializeSockets(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:82</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a7d0890044e77de47351ab7fd0da64678"><div class="ttname"><a href="class_t_c_p_client.html#a7d0890044e77de47351ab7fd0da64678">TCPClient::IsOpen</a></div><div class="ttdeci">bool IsOpen(void) const </div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:73</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a7019a1b6bb8af0e06c2463141c1b9003"><div class="ttname"><a href="class_t_c_p_client.html#a7019a1b6bb8af0e06c2463141c1b9003">TCPClient::ShutdownSocket</a></div><div class="ttdeci">void ShutdownSocket(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:63</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a36d3a680e8b95a7dff9a668f93b9e6f5"><div class="ttname"><a href="class_t_c_p_client.html#a36d3a680e8b95a7dff9a668f93b9e6f5">TCPClient::Send</a></div><div class="ttdeci">int Send(char *message, int messageSize)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:173</div></div>
+<div class="ttc" id="class_t_c_p_client_html_a091bd16baee06d0c980062a442b2c1c4"><div class="ttname"><a href="class_t_c_p_client.html#a091bd16baee06d0c980062a442b2c1c4">TCPClient::TCPClient</a></div><div class="ttdeci">TCPClient(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:18</div></div>
+<div class="ttc" id="class_t_c_p_client_html"><div class="ttname"><a href="class_t_c_p_client.html">TCPClient</a></div><div class="ttdoc">Classe que encapsula uma conex�o TCP/IP. </div><div class="ttdef"><b>Definition:</b> TCPClient.h:32</div></div>
+<div class="ttc" id="class_t_c_p_client_html_aae4b0a944ecafd51e6bd3b36ea0864b5"><div class="ttname"><a href="class_t_c_p_client.html#aae4b0a944ecafd51e6bd3b36ea0864b5">TCPClient::Close</a></div><div class="ttdeci">void Close(void)</div><div class="ttdef"><b>Definition:</b> TCPClient.cpp:51</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 18 de Agosto de 2014 12:37:31 para Dream Net por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.7
+</small></address>
+</body>
+</html>

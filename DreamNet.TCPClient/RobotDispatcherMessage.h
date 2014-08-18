@@ -1,50 +1,55 @@
 #pragma once
 
 /**
-*	The MIT License (MIT)
+* @file  RobotDispatcherMessage.h
+* @brief Classe que mantem as informações enviadas para o servidor
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011-2014, EESC-USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "NetworkDispatcherData.h"
 #include <stdio.h>
 
+/*******************************************************************
+*   ESTRUTURA DA CLASSE
+*******************************************************************/
+
+/**
+* @brief Classe que mantem as informações enviadas para o servidor
+*/
 class RobotDispatcherMessage : public NetworkDispatcherData
 {
 public:
+
+	/**
+	* Configura a posição do robô
+	* @param position - Posição (ângulo) do robô
+	*/
 	inline void SetPosition(double position)
 	{
 		m_dPosition = position;
 	}
 
+	/**
+	* Configura o status do robô
+	* @param status - Status atual do robô
+	*/
 	inline void SetStatus(int status)
 	{
 		m_iStatus = status;
 	}
 
 protected:
+
+	/**
+	* Método de serialização das mensagens para binário
+	* @param encode - buffer utilizado para codificar a mensagem em binário
+	*/
 	void OnSerialize(BufferEncode &encode);
 
 private:
-	double m_dPosition;
-	int m_iStatus;
+	double m_dPosition;			/**< m_dPosition - posição (ângulo) da junta do robô */
+	int m_iStatus;				/**< m_iStatus - status do robô */
 };
 

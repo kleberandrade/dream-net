@@ -9,7 +9,7 @@
 #include "GameRequestMessage.h"
 
 /*******************************************************************
-*   IMPLEMENTAÇÃO DA CLASSE GAMEREQUESTMESSAGE
+*   IMPLEMENTAÇÃO DA CLASSE
 *******************************************************************/
 
 /**

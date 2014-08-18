@@ -10,6 +10,10 @@
 
 #include "NetworkRequestData.h"
 
+/*******************************************************************
+*   ESTRUTURA DA CLASSE
+*******************************************************************/
+
 /**
 * @brief Classe que mantem as informações recebidas do servidor (Game)
 */

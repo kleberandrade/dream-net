@@ -43,7 +43,6 @@ namespace DreamNet.TCPServer
             {
                 while (client.Connected)
                 {
-                    
                     Send(stream);
                     Receive(stream);
                 }

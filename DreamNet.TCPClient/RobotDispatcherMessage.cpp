@@ -8,6 +8,10 @@
 
 #include "RobotDispatcherMessage.h"
 
+/*******************************************************************
+*   ESTRUTURA DA CLASSE
+*******************************************************************/
+
 /**
 * Método de serialização das mensagens para binário
 * @param encode - buffer utilizado para codificar a mensagem em binário

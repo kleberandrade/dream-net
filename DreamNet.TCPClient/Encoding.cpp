@@ -8,6 +8,10 @@
 
 #include "Encoding.h"
 
+/*******************************************************************
+*   IMPLEMENTAÇÃO DA CLASSE
+*******************************************************************/
+
 /**
 * @brief Método estático para converter int do host para rede
 * @param iValue - valor int a ser convertido

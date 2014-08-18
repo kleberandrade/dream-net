@@ -16,7 +16,10 @@
 *   DEFINES
 *******************************************************************/
 
+/** @brief ip da máquina local */
 #define LOCAL_HOST	"127.0.0.1"
+
+/** @brief porta padrão do servidor */
 #define DEFAULT_PORT 13000
 
 /*******************************************************************

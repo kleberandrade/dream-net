@@ -14,7 +14,9 @@
 /*******************************************************************
 *   ESTRUTURA DA CLASSE
 *******************************************************************/
-
+/**
+* @brief Classe auxiliar para codificar um buffer binario
+*/
 class BufferEncode : public Buffer
 {
 public:

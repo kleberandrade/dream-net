@@ -20,6 +20,9 @@
 *   ESTRUTURA DA CLASSE
 *******************************************************************/
 
+/**
+*	@brief  Classe que representa um buffer, criando métodos para pegar e configurar um buffer
+*/
 class Buffer
 {
 public:

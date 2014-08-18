@@ -1,52 +1,53 @@
 /**
-*	The MIT License (MIT)
+* @file  TCPClient.cpp
+* @brief Implementação da classe que encapsula um cliente TCP/IP
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011 - 2014, EESC - USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "TCPClient.h"
 
-TCPClient::TCPClient()
+/*******************************************************************
+*   IMPLEMENTAÇÃO DA CLASSE TCPCLIENT
+*******************************************************************/
+
+/**
+* Construtor da classe
+*/
+TCPClient::TCPClient(void)
 	: m_sAddress(LOCAL_HOST), 
 	m_iPort(DEFAULT_PORT),
-	m_iNonBlock(false),
 	m_cNagle(1)
 {
 	m_Socket = 0;
 }
 
-TCPClient::TCPClient(const char *address, int port, u_long nonBlock, char nagle)
+/**
+* Construtor da classe
+* @param address - endereço IP do servidor
+* @param port - porta de conexão do servidor
+* @param nagle - habilita (0) ou desabilita (1) o algoritmo naggle de conexão
+*/
+TCPClient::TCPClient(const char *address, int port, char nagle)
 	: m_sAddress(address), 
 	m_iPort(port),
-	m_iNonBlock(nonBlock), 
 	m_cNagle(nagle)
 {
 	m_Socket = 0;
 }
 
+/**
+* Destrutor da classe
+*/
 TCPClient::~TCPClient(void)
 {
 	Close();
 }
 
+/**
+* Fecha a conexão se ela estiver aberta
+*/
 void TCPClient::Close(void)
 {
 	if (IsOpen())
@@ -56,16 +57,28 @@ void TCPClient::Close(void)
 	}
 }
 
+/**
+* Encerra conexão com o servidor
+*/
 void TCPClient::ShutdownSocket(void)
 {
 	WSACleanup();
+	shutdown(m_Socket, SD_BOTH);
 }
 
+/**
+* Verifica se existe conexão com o servidor
+* @return conexão estabelecida true), caso contrário (false)
+*/
 bool TCPClient::IsOpen(void) const
 {
 	return m_Socket != 0;
 }
 
+/**
+* Inicializa o WinSock
+* @return inicialização realizada com sucesso (true), falha ao inicializar (false)
+*/
 bool TCPClient::InitializeSockets(void)
 {
 	WSADATA wsaData;
@@ -106,6 +119,10 @@ bool TCPClient::InitializeSockets(void)
 	return true;
 }
 
+/**
+* Abre conexão com o servidor
+* @return conexão estabelecida true), caso contrário (false)
+*/
 bool TCPClient::Open(void)
 {
 	/// Cria um socket para conexão com o servidor
@@ -140,16 +157,6 @@ bool TCPClient::Open(void)
 		return false;
 	}
 
-	// Configura o modo the socket para não bloqueante
-	m_iResult = ioctlsocket(m_Socket, FIONBIO, &m_iNonBlock);
-	if (m_iResult == SOCKET_ERROR)
-	{
-		printf("ioctlsocket failed with error: %d\n", WSAGetLastError());
-		Close();
-		ShutdownSocket();
-		return false;
-	}
-
 	// Desabilita o algoritmo Nagle
 	setsockopt(m_Socket, IPPROTO_TCP, TCP_NODELAY, &m_cNagle, sizeof(m_cNagle));
 	
@@ -157,6 +164,12 @@ bool TCPClient::Open(void)
 	return true;
 }
 
+/**
+* Envia uma mensagem para o servidor
+* @param message - mensagem a ser enviada para o servidor
+* @param messageSize - tamanho da mensagem a ser enviada
+* @return informações do envio da mensagem
+*/
 int TCPClient::Send(char *message, int messageSize)
 {
 	m_iResult = NetworkServices::SendMessage(m_Socket, message, messageSize);
@@ -171,6 +184,12 @@ int TCPClient::Send(char *message, int messageSize)
 	return m_iResult;
 }
 
+/**
+* Recebe um buffer (mensagem) do servidor
+* @param buffer - buffer recebido do servidor
+* @param bufferSize - tamanho do buffer recebido
+* @return informações do recebimento do buffer
+*/
 int TCPClient::Receiver(char *buffer, int bufferSize)
 {
 	m_iResult = NetworkServices::ReceiveMessage(m_Socket, buffer, bufferSize);

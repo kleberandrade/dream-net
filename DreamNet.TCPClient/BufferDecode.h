@@ -15,6 +15,9 @@
 *   ESTRUTURA DA CLASSE
 *******************************************************************/
 
+/**
+* @brief Classe auxiliar para decodificar um buffer binario
+*/
 class BufferDecode : public Buffer
 {
 public:

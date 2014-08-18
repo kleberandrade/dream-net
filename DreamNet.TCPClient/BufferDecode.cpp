@@ -1,30 +1,20 @@
 /**
-*	The MIT License (MIT)
+* @file  BufferDecode.h
+* @brief Classe auxiliar para decodificar um buffer binario
 *
-*	Copyright (c) 2011-2014 DreanNet, EESC-USP.
+* @copyright DreanNet 2011-2014, EESC-USP.
 *
-*	Permission is hereby granted, free of charge, to any person obtaining a copy
-*	of this software and associated documentation files (the "Software"), to deal
-*	in the Software without restriction, including without limitation the rights
-*	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*	copies of the Software, and to permit persons to whom the Software is
-*	furnished to do so, subject to the following conditions:*
-*
-*	The above copyright notice and this permission notice shall be included in
-*	all copies or substantial portions of the Software.
-*
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*	THE SOFTWARE.
 */
 
 #include "BufferDecode.h"
 
+/*******************************************************************
+*   IMPLEMENTAÇÃO DA CLASSE BUFFERDECODE
+*******************************************************************/
 
+/**
+* Construtor da classe
+*/
 BufferDecode::BufferDecode(void)
 	: Buffer(),
 	m_iPosition(0)
@@ -32,6 +22,10 @@ BufferDecode::BufferDecode(void)
 	Clear();
 }
 
+/**
+* Construtor da classe
+* @param buffer - Conteúdo para o buffer
+*/
 BufferDecode::BufferDecode(char buffer[])
 	: Buffer(buffer),
 	m_iPosition(0)
@@ -39,7 +33,11 @@ BufferDecode::BufferDecode(char buffer[])
 
 }
 
-double BufferDecode::DecodeDouble()
+/**
+* Pega o próximo double
+* @return double - retorna o próximo double do buffer
+*/
+double BufferDecode::GetDouble()
 {
 	double value;
 	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(double));
@@ -47,7 +45,11 @@ double BufferDecode::DecodeDouble()
 	return Encoding::NetworkToHostDouble(value);
 }
 
-float BufferDecode::DecodeFloat()
+/**
+* Pega o próximo float
+* @return float - retorna o próximo float do buffer
+*/
+float BufferDecode::GetFloat()
 {
 	float value;
 	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(float));
@@ -55,7 +57,11 @@ float BufferDecode::DecodeFloat()
 	return Encoding::NetworkToHostFloat(value);
 }
 
-int BufferDecode::DecodeInt()
+/**
+* Pega o próximo int
+* @return int - retorna o próximo int do buffer
+*/
+int BufferDecode::GetInt()
 {
 	int value;
 	memcpy(&value, &m_strBuffer[m_iPosition], sizeof(int));
@@ -63,7 +69,9 @@ int BufferDecode::DecodeInt()
 	return Encoding::NetworkToHostInt(value);
 }
 
-
+/**
+* Limpa o buffer e zera m_iPosition
+*/
 void BufferDecode::Clear(void)
 {
 	Buffer::Clear();
